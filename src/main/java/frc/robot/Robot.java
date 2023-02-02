@@ -7,6 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Drivetrain;
+
 import com.kauailabs.navx.frc.AHRS;
 
 
@@ -27,7 +29,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends TimedRobot {
 
   AHRS ahrs;
-  Joystick stick;
+  public static OI oi = new OI(); 
+  public static Drivetrain drivetrain = new Drivetrain();
 
   private Command m_autonomousCommand;
 
@@ -35,11 +38,10 @@ public class Robot extends TimedRobot {
 
   /**
    * This function is run when the robot is first started up and should be used for any
-   * initialization code.
+   * initialization code. 
    */
   @Override
   public void robotInit() {
-    stick = new Joystick(0);
       try {
           /* Communicate w/navX-MXP via the MXP SPI Bus.                                     */
           /* Alternatively:  I2C.Port.kMXP, SerialPort.Port.kMXP or SerialPort.Port.kUSB     */
@@ -79,7 +81,6 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -107,12 +108,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     while (isEnabled()) {
           
-      Timer.delay(0.020);		/* wait for one motor update time period (50Hz)     */
-      
-      boolean zero_yaw_pressed = stick.getTrigger();
-      if ( zero_yaw_pressed ) {
-          ahrs.zeroYaw();
-      }
+      // Timer.delay(0.020);		/* wait for one motor update time period (50Hz)     */
 
       /* Display 6-axis Processed Angle Data                                      */
       SmartDashboard.putBoolean(  "IMU_Connected",        ahrs.isConnected());
