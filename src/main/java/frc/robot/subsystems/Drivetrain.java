@@ -11,23 +11,21 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Drivetrain extends SubsystemBase {
 
-  TalonSRX rightLeader, leftLeader;
-  VictorSPX rightFollower, leftFollower; 
+  CANSparkMax rightLeader, leftLeader;
+  CANSparkMax rightFollower, leftFollower; 
 
   public Drivetrain() {
-    rightLeader = new TalonSRX(RobotMap.RIGHT_LEADER);
-    leftLeader = new TalonSRX(RobotMap.LEFT_LEADER);
-    rightFollower = new VictorSPX(RobotMap.RIGHT_FOLLOWER);
-    leftFollower = new VictorSPX(RobotMap.LEFT_FOLLOWER);
+    rightLeader = new CANSparkMax(RobotMap.RIGHT_LEADER, MotorType.kBrushless);
+    leftLeader = new CANSparkMax(RobotMap.LEFT_LEADER, MotorType.kBrushless);
+    rightFollower = new CANSparkMax(RobotMap.RIGHT_FOLLOWER, MotorType.kBrushless);
+    leftFollower = new CANSparkMax(RobotMap.LEFT_FOLLOWER, MotorType.kBrushless);
 
     //set brakemode
-    rightLeader.setNeutralMode(NeutralMode.Brake);
-    leftLeader.setNeutralMode(NeutralMode.Brake);
-    rightFollower.setNeutralMode(NeutralMode.Brake);
-    leftFollower.setNeutralMode(NeutralMode.Brake);
 
     //set slaves
     rightFollower.follow(rightLeader);
@@ -38,13 +36,13 @@ public class Drivetrain extends SubsystemBase {
 
 
   public void tankDrive(double left, double right){
-    this.leftLeader.set(ControlMode.PercentOutput, left);
-    this.rightLeader.set(ControlMode.PercentOutput, right);
+    this.leftLeader.set(left);
+    this.rightLeader.set(right);
   }
 
   public void stop(){
-    leftLeader.set(ControlMode.PercentOutput, 0);
-    rightLeader.set(ControlMode.PercentOutput, 0);
+    leftLeader.stopMotor();
+    rightLeader.stopMotor();
   }
 
   @Override
