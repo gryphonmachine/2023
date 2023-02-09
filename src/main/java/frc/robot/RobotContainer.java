@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.GenericHID.Hand;
 import frc.robot.commands.StartPneumatics;
+import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -23,7 +25,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  public static Drivetrain drivetrain;
   public static Pneumatics pneumatics;
+
   public static XboxController xbox;
   public static JoystickButton solenoidButton;
   public static JoystickButton solenoidOffButton;
@@ -32,10 +36,30 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+    drivetrain = new Drivetrain();
     pneumatics = new Pneumatics();
     configureButtonBindings();
 
+    drivetrain.setDefaultCommand(new StartDriving());
     pneumatics.setDefaultCommand(new StartPneumatics());
+  }
+
+  public static double getYLeft(){
+    double kleft = xbox.getLeftY();
+    if(Math.abs(kleft) <= 0.1){
+      return 0;
+    } else {
+      return kleft*Math.abs(kleft); //Math.abs to preserve sign
+    }
+  }
+
+  public static double getYRight(){
+    double kright = xbox.getRightY();
+    if(Math.abs(kright) <= 0.1){
+      return 0;
+    } else {
+      return kright*Math.abs(kright); //Math.abs to preserve sign
+    }
   }
 
   public static boolean getSolenoidButton() {
@@ -61,24 +85,6 @@ public class RobotContainer {
     solenoidOffButton = new JoystickButton(xbox, 1);
   }
 
-  // public static double getYLeft() {
-  //   double kleft = xbox.getLeftY();
-  //   if (Math.abs(kleft) <= 0.1) {
-  //     return 0;
-  //   } else {
-  //     return -kleft * Math.abs(kleft);
-  //   }
-  // }
-
-  // public static double getYRight() {
-  //   double kright = xbox.getRightY();
-  //   if (Math.abs(kright) <= 0.1) {
-  //     return 0;
-  //   } else {
-  //     return kright * Math.abs(kright);
-  //   }
-  // }
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -86,6 +92,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new StartPneumatics();
+    return new StartDriving();
   }
 }
