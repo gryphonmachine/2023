@@ -7,9 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.GenericHID.Hand;
-import frc.robot.commands.StartPneumatics;
+// import frc.robot.commands.StartPneumatics;
 import frc.robot.commands.StartDriving;
-import frc.robot.subsystems.Pneumatics;
+// import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Drivetrain drivetrain;
-  public static Pneumatics pneumatics;
+  // public static Pneumatics pneumatics;
 
   public static XboxController xbox;
   public static JoystickButton solenoidButton;
@@ -37,11 +37,11 @@ public class RobotContainer {
    */
   public RobotContainer() {
     drivetrain = new Drivetrain();
-    pneumatics = new Pneumatics();
+    // pneumatics = new Pneumatics();
     configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
-    pneumatics.setDefaultCommand(new StartPneumatics());
+    // pneumatics.setDefaultCommand(new StartPneumatics());
   }
 
   public static double getYLeft(){
@@ -49,7 +49,7 @@ public class RobotContainer {
     if(Math.abs(kleft) <= 0.1){
       return 0;
     } else {
-      return kleft*Math.abs(kleft); //Math.abs to preserve sign
+      return -kleft*Math.abs(kleft); //Math.abs to preserve sign
     }
   }
 
