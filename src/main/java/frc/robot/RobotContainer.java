@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.XboxController;
 // import edu.wpi.first.wpilibj.GenericHID.Hand;
 // import frc.robot.commands.StartPneumatics;
 import frc.robot.commands.StartDriving;
+import frc.robot.commands.StartActuators;
 // import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.MiniMe;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -26,21 +28,28 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Drivetrain drivetrain;
+  public static MiniMe miniMe;
+
   // public static Pneumatics pneumatics;
 
   public static XboxController xbox;
   public static JoystickButton solenoidButton;
   public static JoystickButton solenoidOffButton;
+  public static JoystickButton pushButton;
+  public static JoystickButton pullButton;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     drivetrain = new Drivetrain();
+    miniMe = new MiniMe();
+    
     // pneumatics = new Pneumatics();
     configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
+    miniMe.setDefaultCommand(new StartActuators());
     // pneumatics.setDefaultCommand(new StartPneumatics());
   }
 
@@ -70,6 +79,14 @@ public class RobotContainer {
     return solenoidButton.getAsBoolean();
   }
 
+  public static boolean getPushButton() {
+    return pushButton.getAsBoolean();
+  }
+
+  public static boolean getPullButton() {
+    return pullButton.getAsBoolean();
+  }
+
   /**
    * Use this method to define your button->command mappings. Buttons can be
    * created by
@@ -83,6 +100,8 @@ public class RobotContainer {
     xbox = new XboxController(0);
     solenoidButton = new JoystickButton(xbox, 0);
     solenoidOffButton = new JoystickButton(xbox, 1);
+    pushButton= new JoystickButton(xbox, 2);
+    pullButton = new JoystickButton(xbox, 3);
   }
 
   /**
