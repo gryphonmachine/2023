@@ -23,15 +23,11 @@ public class MiniMe extends SubsystemBase {
   }
 
 
-  public void pull(boolean on){
-    if (on) {
-        this.actuator.set(1);
-    }
+  public void pull(){
+      this.actuator.set(1);
   }
-  public void push(boolean on){
-    if (on) {
-        this.actuator.set(-1);
-    }
+  public void push(){
+      this.actuator.set(-1);
   }
 
   public void stop(){

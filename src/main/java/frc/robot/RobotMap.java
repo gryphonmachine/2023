@@ -8,13 +8,13 @@ public class RobotMap {
 
     // ACTUATOR MOTORS
     public static final int actuator = 7;
-    public static final int actuatorFollower  = 1;
+    public static final int actuatorFollower  = 8;
 
     // DRIVETRAIN MOTORS
     public static final int right = 5;
     public static final int left = 2;
     
-    public static final int rightSlave = 6;
-    public static final int leftSlave = 3;
+    public static final int rightFollower = 6;
+    public static final int leftFollower = 3;
 
 }

@@ -15,13 +15,23 @@ public class StartActuators extends CommandBase {
       // Called every time the scheduler runs while the command is scheduled.
       @Override
       public void execute() {
-        if (RobotContainer.getPullButton() && RobotContainer.getPushButton()) {
-          RobotContainer.miniMe.stop();
-        } else {
-          RobotContainer.miniMe.pull(RobotContainer.getPullButton());
-          RobotContainer.miniMe.push(RobotContainer.getPushButton());
-        }
+        // if (RobotContainer.getPullButton() && RobotContainer.getPushButton()) {
+        //   RobotContainer.miniMe.stop();
+        // } else {
+        //   RobotContainer.miniMe.pull(RobotContainer.getPullButton());
+        //   RobotContainer.miniMe.push(RobotContainer.getPushButton());
+        // }
+        System.out.print(RobotContainer.getPullButton());
+        System.out.print(RobotContainer.getPushButton());
+        System.out.println();
         
+        if(RobotContainer.getPullButton()) {
+          RobotContainer.miniMe.pull();
+        } else if(RobotContainer.getPushButton()) {
+          RobotContainer.miniMe.push();
+        } else {
+          RobotContainer.miniMe.stop();
+        }
       }
     
       // Called once the command ends or is interrupted.

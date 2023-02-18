@@ -100,8 +100,8 @@ public class RobotContainer {
     xbox = new XboxController(0);
     solenoidButton = new JoystickButton(xbox, 0);
     solenoidOffButton = new JoystickButton(xbox, 1);
-    pushButton= new JoystickButton(xbox, 2);
-    pullButton = new JoystickButton(xbox, 3);
+    pushButton= new JoystickButton(xbox, 5);
+    pullButton = new JoystickButton(xbox, 6);
   }
 
   /**

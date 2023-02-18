@@ -17,8 +17,8 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
     right = new CANSparkMax(RobotMap.right, MotorType.kBrushless);
     left = new CANSparkMax(RobotMap.left, MotorType.kBrushless);
-    rightSlave = new CANSparkMax(RobotMap.rightSlave, MotorType.kBrushless);
-    leftSlave = new CANSparkMax(RobotMap.leftSlave, MotorType.kBrushless);
+    rightSlave = new CANSparkMax(RobotMap.rightFollower, MotorType.kBrushless);
+    leftSlave = new CANSparkMax(RobotMap.rightFollower, MotorType.kBrushless);
 
     //set slaves
     rightSlave.follow(right);
