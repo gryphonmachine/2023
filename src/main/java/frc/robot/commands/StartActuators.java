@@ -21,9 +21,9 @@ public class StartActuators extends CommandBase {
         //   RobotContainer.miniMe.pull(RobotContainer.getPullButton());
         //   RobotContainer.miniMe.push(RobotContainer.getPushButton());
         // }
-        System.out.print(RobotContainer.getPullButton());
-        System.out.print(RobotContainer.getPushButton());
-        System.out.println();
+        // System.out.print(RobotContainer.getPullButton());
+        // System.out.print(RobotContainer.getPushButton());
+        // System.out.println();
         
         if(RobotContainer.getPullButton()) {
           RobotContainer.miniMe.pull();
