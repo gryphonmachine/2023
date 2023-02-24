@@ -13,6 +13,7 @@ import frc.robot.commands.StartActuators;
 // import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.MiniMe;
+import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -29,6 +30,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Drivetrain drivetrain;
   public static MiniMe miniMe;
+  public static Arm arm; 
 
   // public static Pneumatics pneumatics;
 
@@ -37,6 +39,8 @@ public class RobotContainer {
   public static JoystickButton solenoidOffButton;
   public static JoystickButton pushButton;
   public static JoystickButton pullButton;
+  public static JoystickButton liftArmButton;
+  public static JoystickButton dropArmButton;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -44,6 +48,7 @@ public class RobotContainer {
   public RobotContainer() {
     drivetrain = new Drivetrain();
     miniMe = new MiniMe();
+    arm = new Arm();
     
     // pneumatics = new Pneumatics();
     configureButtonBindings();
@@ -86,6 +91,13 @@ public class RobotContainer {
   public static boolean getPullButton() {
     return pullButton.getAsBoolean();
   }
+   public static boolean getLiftArmButton() {
+    return liftArmButton.getAsBoolean();
+  }
+   public static boolean getDropArmButton() {
+    return dropArmButton.getAsBoolean();
+  }
+
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -102,6 +114,8 @@ public class RobotContainer {
     solenoidOffButton = new JoystickButton(xbox, 1);
     pushButton= new JoystickButton(xbox, 5);
     pullButton = new JoystickButton(xbox, 6);
+    liftArmButton = new JoystickButton(xbox, 3);
+    dropArmButton = new JoystickButton(xbox, 4);
   }
 
   /**
