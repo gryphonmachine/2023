@@ -7,9 +7,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class MoveArm extends CommandBase {
+public class StartArm extends CommandBase {
   /** Creates a new StartDriving. */
-  public MoveArm() {
+  public StartArm() {
     addRequirements(RobotContainer.arm);
   }
 
@@ -21,7 +21,7 @@ public class MoveArm extends CommandBase {
   @Override
   public void execute() {
     // RobotContainer.drivetrain.tankDrive(RobotContainer.getYLeft(), RobotContainer.getYRight());
-    if(RobotContainer.getLiftArmButton()) {
+    if(RobotContainer.getDropArmButton()) {
       RobotContainer.arm.pull();
     } else if(RobotContainer.getLiftArmButton()) {
       RobotContainer.arm.push();

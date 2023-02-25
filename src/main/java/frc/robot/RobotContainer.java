@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 // import frc.robot.commands.StartPneumatics;
 import frc.robot.commands.StartDriving;
 import frc.robot.commands.StartActuators;
+import frc.robot.commands.StartArm;
 // import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.MiniMe;
@@ -49,12 +50,13 @@ public class RobotContainer {
     drivetrain = new Drivetrain();
     miniMe = new MiniMe();
     arm = new Arm();
-    
     // pneumatics = new Pneumatics();
+
     configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
     miniMe.setDefaultCommand(new StartActuators());
+    arm.setDefaultCommand(new StartArm());
     // pneumatics.setDefaultCommand(new StartPneumatics());
   }
 

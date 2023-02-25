@@ -20,10 +20,10 @@ public class Arm extends SubsystemBase {
 
 
   public void pull(){
-    this.arm.set(0.25);
+    this.arm.set(0.05);
   }
   public void push(){
-    this.arm.set(-0.25);
+    this.arm.set(0.25);
   }
 
   public void stop(){
