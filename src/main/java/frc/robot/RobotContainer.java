@@ -6,12 +6,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-// import edu.wpi.first.wpilibj.GenericHID.Hand;
-// import frc.robot.commands.StartPneumatics;
+import frc.robot.commands.StartPneumatics;
 import frc.robot.commands.StartDriving;
 import frc.robot.commands.StartActuators;
 import frc.robot.commands.StartArm;
-// import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.MiniMe;
 import frc.robot.subsystems.Arm;
@@ -32,6 +31,7 @@ public class RobotContainer {
   public static Drivetrain drivetrain;
   public static MiniMe miniMe;
   public static Arm arm; 
+  public static Pneumatics pneumatics;
 
   // public static Pneumatics pneumatics;
 
@@ -50,14 +50,14 @@ public class RobotContainer {
     drivetrain = new Drivetrain();
     miniMe = new MiniMe();
     arm = new Arm();
-    // pneumatics = new Pneumatics();
+    pneumatics = new Pneumatics();
 
     configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
     miniMe.setDefaultCommand(new StartActuators());
     arm.setDefaultCommand(new StartArm());
-    // pneumatics.setDefaultCommand(new StartPneumatics());
+    pneumatics.setDefaultCommand(new StartPneumatics());
   }
 
   public static double getYLeft(){
@@ -83,7 +83,7 @@ public class RobotContainer {
   }
 
   public static boolean getSolenoidOffButton() {
-    return solenoidButton.getAsBoolean();
+    return solenoidOffButton.getAsBoolean();
   }
 
   public static boolean getPushButton() {
@@ -93,13 +93,14 @@ public class RobotContainer {
   public static boolean getPullButton() {
     return pullButton.getAsBoolean();
   }
-   public static boolean getLiftArmButton() {
+
+  public static boolean getLiftArmButton() {
     return liftArmButton.getAsBoolean();
   }
-   public static boolean getDropArmButton() {
+  
+  public static boolean getDropArmButton() {
     return dropArmButton.getAsBoolean();
   }
-
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -112,12 +113,12 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     xbox = new XboxController(0);
-    solenoidButton = new JoystickButton(xbox, 0);
-    solenoidOffButton = new JoystickButton(xbox, 1);
-    pushButton= new JoystickButton(xbox, 5);
-    pullButton = new JoystickButton(xbox, 6);
+    solenoidButton = new JoystickButton(xbox, 1);
+    solenoidOffButton = new JoystickButton(xbox, 2);
     liftArmButton = new JoystickButton(xbox, 3);
     dropArmButton = new JoystickButton(xbox, 4);
+    pushButton= new JoystickButton(xbox, 5);
+    pullButton = new JoystickButton(xbox, 6);
   }
 
   /**

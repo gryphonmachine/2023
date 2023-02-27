@@ -20,7 +20,6 @@ public class StartArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // RobotContainer.drivetrain.tankDrive(RobotContainer.getYLeft(), RobotContainer.getYRight());
     if(RobotContainer.getDropArmButton()) {
       RobotContainer.arm.pull();
     } else if(RobotContainer.getLiftArmButton()) {

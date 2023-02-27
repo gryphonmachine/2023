@@ -18,12 +18,14 @@ public class Arm extends SubsystemBase {
     stop();
   }
 
-
+  // x pulls down & holds in place
   public void pull(){
-    this.arm.set(0.05);
+    this.arm.set(-0.05);
   }
+
+  // y key pushes up
   public void push(){
-    this.arm.set(0.25);
+    this.arm.set(-0.25);
   }
 
   public void stop(){
