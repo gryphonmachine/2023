@@ -15,7 +15,6 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.MiniMe;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -33,16 +32,6 @@ public class RobotContainer {
   public static Arm arm; 
   public static Pneumatics pneumatics;
 
-  // public static Pneumatics pneumatics;
-
-  public static XboxController xbox;
-  public static JoystickButton solenoidButton;
-  public static JoystickButton solenoidOffButton;
-  public static JoystickButton pushButton;
-  public static JoystickButton pullButton;
-  public static JoystickButton liftArmButton;
-  public static JoystickButton dropArmButton;
-
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -52,7 +41,6 @@ public class RobotContainer {
     arm = new Arm();
     pneumatics = new Pneumatics();
 
-    configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
     miniMe.setDefaultCommand(new StartActuators());
@@ -60,47 +48,6 @@ public class RobotContainer {
     pneumatics.setDefaultCommand(new StartPneumatics());
   }
 
-  public static double getYLeft(){
-    double kleft = xbox.getLeftY();
-    if(Math.abs(kleft) <= 0.1){
-      return 0;
-    } else {
-      return -kleft*Math.abs(kleft); //Math.abs to preserve sign
-    }
-  }
-
-  public static double getYRight(){
-    double kright = xbox.getRightY();
-    if(Math.abs(kright) <= 0.1){
-      return 0;
-    } else {
-      return kright*Math.abs(kright); //Math.abs to preserve sign
-    }
-  }
-
-  public static boolean getSolenoidButton() {
-    return solenoidButton.getAsBoolean();
-  }
-
-  public static boolean getSolenoidOffButton() {
-    return solenoidOffButton.getAsBoolean();
-  }
-
-  public static boolean getPushButton() {
-    return pushButton.getAsBoolean();
-  }
-
-  public static boolean getPullButton() {
-    return pullButton.getAsBoolean();
-  }
-
-  public static boolean getLiftArmButton() {
-    return liftArmButton.getAsBoolean();
-  }
-  
-  public static boolean getDropArmButton() {
-    return dropArmButton.getAsBoolean();
-  }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -111,15 +58,6 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
 
-  private void configureButtonBindings() {
-    xbox = new XboxController(0);
-    solenoidButton = new JoystickButton(xbox, 1);
-    solenoidOffButton = new JoystickButton(xbox, 2);
-    liftArmButton = new JoystickButton(xbox, 5);
-    dropArmButton = new JoystickButton(xbox, 6);
-    pushButton= new JoystickButton(xbox, 3);
-    pullButton = new JoystickButton(xbox, 4);
-  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

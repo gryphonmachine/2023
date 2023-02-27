@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.RobotContainer;
 
 public class StartArm extends CommandBase {
@@ -20,9 +21,9 @@ public class StartArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.getDropArmButton()) {
+    if(OI.getDropArmButton()) {
       RobotContainer.arm.pull();
-    } else if(RobotContainer.getLiftArmButton()) {
+    } else if(OI.getLiftArmButton()) {
       RobotContainer.arm.push();
     } else {
       RobotContainer.arm.stop();
