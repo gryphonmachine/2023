@@ -22,10 +22,8 @@ public class StartPneumatics extends CommandBase {
   @Override
   public void execute() {
     if (RobotContainer.getSolenoidOffButton()) {
-      System.out.println("Offing Solenoid");
       RobotContainer.pneumatics.solenoidBack();
     } else if(RobotContainer.getSolenoidButton()) {
-      System.out.println("Onning Solenoid");
       RobotContainer.pneumatics.solenoidForward();
     }
   }

@@ -8,6 +8,18 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Timer;
+
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -18,7 +30,10 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  public static AHRS imu; 
+  public static NetworkTable limelight;
+  public static NetworkTableEntry ll_x;
+  public static NetworkTableEntry ll_y;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -27,7 +42,16 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+     try {
+          imu = new AHRS(SPI.Port.kMXP); 
+      } catch (RuntimeException ex ) {
+          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
+      }
     m_robotContainer = new RobotContainer();
+    limelight = NetworkTableInstance.getDefault().getTable("limelight");
+    ll_x = limelight.getEntry("tx");
+    ll_y = limelight.getEntry("ty");
+
   }
 
   /**
@@ -78,11 +102,23 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    DriverStation.reportWarning("Calibrating IMU. Please do not move the robot.", true);
+    Timer.delay(3);
+    imu.calibrate();
+    DriverStation.reportWarning("Finished Calibrating IMU.", true);
   }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    if (isEnabled()) {
+      double x = ll_x.getDouble(0.0);
+      double y = ll_y.getDouble(0.0);
+      SmartDashboard.putNumber("LimelightX", x);
+      SmartDashboard.putNumber("LimelightY", y);
+
+    }
+  }
 
   @Override
   public void testInit() {

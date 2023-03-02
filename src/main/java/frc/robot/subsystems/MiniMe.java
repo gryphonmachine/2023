@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
@@ -24,10 +25,19 @@ public class MiniMe extends SubsystemBase {
 
 
   public void pull(){
-      this.actuator.set(1);
-  }
-  public void push(){
+    if(!RobotContainer.armSwitch.get()){
       this.actuator.set(-1);
+    } else {
+      this.actuator.set(1);
+    }
+  }
+
+  public void push(){
+    if(!RobotContainer.actuatorSwitch.get()){
+      this.actuator.set(1);
+    } else {
+      this.actuator.set(-1);
+    }
   }
 
   public void stop(){

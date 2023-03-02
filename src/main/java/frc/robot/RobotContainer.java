@@ -16,6 +16,7 @@ import frc.robot.subsystems.MiniMe;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -32,8 +33,8 @@ public class RobotContainer {
   public static MiniMe miniMe;
   public static Arm arm; 
   public static Pneumatics pneumatics;
-
-  // public static Pneumatics pneumatics;
+  public static DigitalInput actuatorSwitch;
+  public static DigitalInput armSwitch;
 
   public static XboxController xbox;
   public static JoystickButton solenoidButton;
@@ -51,6 +52,8 @@ public class RobotContainer {
     miniMe = new MiniMe();
     arm = new Arm();
     pneumatics = new Pneumatics();
+    actuatorSwitch = new DigitalInput(1);
+    armSwitch = new DigitalInput(7);
 
     configureButtonBindings();
 

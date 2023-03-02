@@ -21,6 +21,7 @@ public class StartDriving extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.drivetrain.tankDrive(RobotContainer.getYLeft(), RobotContainer.getYRight());
+    System.out.print(!RobotContainer.actuatorSwitch.get() + " " + !RobotContainer.armSwitch.get() + "\n");
   }
 
   // Called once the command ends or is interrupted.
