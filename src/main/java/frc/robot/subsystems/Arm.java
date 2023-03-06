@@ -26,7 +26,7 @@ public class Arm extends SubsystemBase {
 
   // y key pushes up
   public void push(){
-    this.arm.set(-0.15);
+    this.arm.set(-0.2);
   }
 
   public void stop(){
