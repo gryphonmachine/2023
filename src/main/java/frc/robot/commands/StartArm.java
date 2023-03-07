@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.OI;
 
 public class StartArm extends CommandBase {
   /** Creates a new StartDriving. */
@@ -20,9 +21,9 @@ public class StartArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.getDropArmButton()) {
+    if(OI.dropArmButton.getAsBoolean()) {
       RobotContainer.arm.pull();
-    } else if(RobotContainer.getLiftArmButton()) {
+    } else if(OI.liftArmButton.getAsBoolean()) {
       RobotContainer.arm.push();
     } else {
       RobotContainer.arm.stop();

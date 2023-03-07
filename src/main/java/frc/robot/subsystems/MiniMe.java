@@ -7,41 +7,32 @@ package frc.robot.subsystems;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class MiniMe extends SubsystemBase {
 
-  CANSparkMax actuator, follower;
-
   public MiniMe() {
-    actuator = new CANSparkMax(RobotMap.actuator, MotorType.kBrushed);
-    follower = new CANSparkMax(RobotMap.actuatorFollower, MotorType.kBrushed);
-
-    //set slaves
-    follower.follow(actuator);
     stop();
   }
 
 
   public void pull(){
     if(!RobotContainer.armSwitch.get()){
-      this.actuator.set(-1);
+      RobotMap.actuator.set(-1);
     } else {
-      this.actuator.set(1);
+      RobotMap.actuator.set(1);
     }
   }
 
   public void push(){
     if(!RobotContainer.actuatorSwitch.get()){
-      this.actuator.set(1);
+      RobotMap.actuator.set(1);
     } else {
-      this.actuator.set(-1);
+      RobotMap.actuator.set(-1);
     }
   }
 
   public void stop(){
-    this.actuator.stopMotor();
+    RobotMap.actuator.stopMotor();
   }
 
   @Override

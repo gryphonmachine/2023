@@ -7,6 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
+import frc.robot.OI;
 
 public class StartPneumatics extends CommandBase {
   /** Creates a new StartPneumatics. */
@@ -21,9 +22,9 @@ public class StartPneumatics extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (RobotContainer.getSolenoidOffButton()) {
+    if (OI.solenoidOffButton.getAsBoolean()) {
       RobotContainer.pneumatics.solenoidBack();
-    } else if(RobotContainer.getSolenoidButton()) {
+    } else if(OI.solenoidButton.getAsBoolean()) {
       RobotContainer.pneumatics.solenoidForward();
     }
   }

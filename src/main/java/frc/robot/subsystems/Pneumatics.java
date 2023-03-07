@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -13,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Pneumatics extends SubsystemBase {
 
 //   Compressor pcmCompressor;
-  DoubleSolenoid doublePCM;
 
   /** Creates a new Chassis. */
   public Pneumatics() {
@@ -26,9 +26,10 @@ public class Pneumatics extends SubsystemBase {
     // boolean pressureSwitch = pcmCompressor.getPressureSwitchValue();
     // double current = pcmCompressor.getCurrent();
 
-    doublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
-    doublePCM.set(Value.kReverse);
+    // doublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
+    // doublePCM.set(Value.kReverse);
     // pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
+    solenoidBack();
   }
 
   @Override
@@ -37,12 +38,12 @@ public class Pneumatics extends SubsystemBase {
   }
 
   public void solenoidForward() {
-    doublePCM.set(Value.kForward);
+    RobotMap.doublePCM.set(Value.kForward);
     // pcmCompressor.enableDigital();
   }
 
   public void solenoidBack() {
-    doublePCM.set(Value.kReverse);
+    RobotMap.doublePCM.set(Value.kReverse);
     // pcmCompressor.disable();
   }
 }

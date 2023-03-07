@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.cameraserver.CameraServer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -33,8 +35,7 @@ public class Robot extends TimedRobot {
   public static AHRS imu; 
   public static NetworkTable limelight;
   public static NetworkTableEntry ll_x;
-  public static NetworkTableEntry ll_y;
-  /**
+  public static NetworkTableEntry ll_y;  /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
     limelight = NetworkTableInstance.getDefault().getTable("limelight");
     ll_x = limelight.getEntry("tx");
     ll_y = limelight.getEntry("ty");
+    CameraServer.startAutomaticCapture();
 
   }
 

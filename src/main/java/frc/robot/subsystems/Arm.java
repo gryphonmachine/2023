@@ -15,22 +15,21 @@ public class Arm extends SubsystemBase {
   CANSparkMax arm;
 
   public Arm() {
-    arm = new CANSparkMax(RobotMap.arm, MotorType.kBrushed);
     stop();
   }
 
   // x pulls down & holds in place
   public void pull(){
-    this.arm.set(-0.5);
+    RobotMap.arm.set(-0.5);
   }
 
   // y key pushes up
   public void push(){
-    this.arm.set(-0.2);
+    RobotMap.arm.set(-0.2);
   }
 
   public void stop(){
-    this.arm.stopMotor();
+    RobotMap.arm.stopMotor();
   }
 
   @Override
