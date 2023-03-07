@@ -11,30 +11,28 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Drivetrain extends SubsystemBase {
 
-  CANSparkMax right, left;
-  CANSparkMax rightSlave, leftSlave; 
+  // CANSparkMax right, left;
+  // CANSparkMax rightSlave, leftSlave; 
 
   public Drivetrain() {
-    right = new CANSparkMax(RobotMap.right, MotorType.kBrushless);
-    left = new CANSparkMax(RobotMap.left, MotorType.kBrushless);
-    rightSlave = new CANSparkMax(RobotMap.rightFollower, MotorType.kBrushless);
-    leftSlave = new CANSparkMax(RobotMap.leftFollower, MotorType.kBrushless);
+    // right = new CANSparkMax(RobotMap.right, MotorType.kBrushless);
+    // left = new CANSparkMax(RobotMap.left, MotorType.kBrushless);
+    // rightSlave = new CANSparkMax(RobotMap.rightFollower, MotorType.kBrushless);
+    // leftSlave = new CANSparkMax(RobotMap.leftFollower, MotorType.kBrushless);
 
     //set slaves
-    rightSlave.follow(right);
-    leftSlave.follow(left);
     stop();
   }
 
 
   public void tankDrive(double left, double right){
-    this.left.set(left);
-    this.right.set(right);
+    RobotMap.left.set(left);
+    RobotMap.right.set(right);
   }
 
   public void stop(){
-    left.stopMotor();
-    right.stopMotor();
+    RobotMap.left.stopMotor();
+    RobotMap.right.stopMotor();
   }
 
   @Override
