@@ -16,7 +16,7 @@ public class MiniMe extends SubsystemBase {
 
 
   public void pull(){
-    if(!RobotContainer.armSwitch.get()){
+    if(!RobotMap.armSwitch.get()){
       RobotMap.actuator.set(-1);
     } else {
       RobotMap.actuator.set(1);
@@ -24,7 +24,7 @@ public class MiniMe extends SubsystemBase {
   }
 
   public void push(){
-    if(!RobotContainer.actuatorSwitch.get()){
+    if(!RobotMap.actuatorSwitch.get()){
       RobotMap.actuator.set(1);
     } else {
       RobotMap.actuator.set(-1);

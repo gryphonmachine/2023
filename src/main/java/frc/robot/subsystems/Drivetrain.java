@@ -6,28 +6,32 @@ package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 
 public class Drivetrain extends SubsystemBase {
 
-  // CANSparkMax right, left;
-  // CANSparkMax rightSlave, leftSlave; 
+  // SPEED MULTIPLIER for ramp up on controller
+  public double speedMultiplier = 1.0;
+
+  public void setSpeedMultiplier(double multiplier) {
+    speedMultiplier = multiplier;
+  }
+  public double getSpeedMultiplier() {
+    return speedMultiplier;
+  }
 
   public Drivetrain() {
-    // right = new CANSparkMax(RobotMap.right, MotorType.kBrushless);
-    // left = new CANSparkMax(RobotMap.left, MotorType.kBrushless);
-    // rightSlave = new CANSparkMax(RobotMap.rightFollower, MotorType.kBrushless);
-    // leftSlave = new CANSparkMax(RobotMap.leftFollower, MotorType.kBrushless);
-
-    //set slaves
     stop();
   }
 
-
   public void tankDrive(double left, double right){
-    RobotMap.left.set(left);
-    RobotMap.right.set(right);
+    RobotMap.left.set(Math.min(1, -left * speedMultiplier));
+    RobotMap.right.set(Math.min(1, -right * speedMultiplier));
   }
 
   public void stop(){
