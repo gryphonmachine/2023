@@ -9,46 +9,51 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
+import edu.wpi.first.math.MathUtil;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.*;
+import edu.wpi.first.math.controller.PIDController;
 
-public class DriveDistance extends CommandBase {
+public class AlignWithTag extends CommandBase {
 
-    final double distance;
-    final double speed;
+    final double deadzone;
+    public double targetArea;
+    public double setPointArea;
 
-    public DriveDistance(double distance, double speed) {
+    // private PIDController pid;
+
+    public AlignWithTag(double setPointArea, double deadzone) {
         addRequirements(RobotContainer.drivetrain);
-        this.speed = speed;
-        this.distance = distance;
+        this.setPointArea = setPointArea;
+        this.deadzone = deadzone;
     }
 
     // Called just before this Command runs the first time
     @Override
     public void initialize() {
-        RobotMap.rightMotorEncoder.setPosition(0);
-        RobotMap.leftMotorEncoder.setPosition(0);
-        System.out.println("Initialized autonomous");
+        System.out.println("Initializing tag alignment");
+        // pid = new PIDController(0.1, 0, 0);
+        // pid.setTolerance(5, 10);
+        // pid.setIntegratorRange(-0.5, 0.5);
+        System.out.println("Target Area:" + targetArea);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     public void execute() {
-        // System.out.println("Driving in autonomous");
+        this.targetArea = RobotContainer.vision.getTargetArea();
         System.out.println(RobotMap.rightMotorEncoder.getPosition());
-
-        RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
+        
+        // double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.targetArea);
+        // double bounded = MathUtil.clamp(speedAmount, -0.1, 0.1);
+        RobotContainer.drivetrain.tankDrive(0.1, 0.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     public boolean isFinished() {
-        if (RobotMap.rightMotorEncoder.getPosition() >= distance ||RobotMap.leftMotorEncoder.getPosition() >= distance){
-            RobotContainer.drivetrain.stop();
-            return true;
-        }
-        return false;
+        return this.targetArea >= this.setPointArea;
     }
 
     // Called once after isFinished returns true

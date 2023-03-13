@@ -47,6 +47,7 @@ public class RobotContainer {
     miniMe = new MiniMe();
     arm = new Arm();
     pneumatics = new Pneumatics();
+    vision = new Vision();
     // actuatorSwitch = new DigitalInput(1);
     // armSwitch = new DigitalInput(7);
 
@@ -56,34 +57,15 @@ public class RobotContainer {
     pneumatics.setDefaultCommand(new StartPneumatics());
   }
 
-
-  /**
-   * Use this method to define your button->command mappings. Buttons can be
-   * created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing
-   * it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
-
-  // private void configureButtonBindings() {
-  //   xbox = new XboxController(0);
-  //   // xbox1 = new XboxController(1);
-
-  //   solenoidButton = new JoystickButton(xbox, 1);
-  //   solenoidOffButton = new JoystickButton(xbox, 2);
-  //   liftArmButton = new JoystickButton(xbox, 5);
-  //   dropArmButton = new JoystickButton(xbox, 6);
-  //   pushButton= new JoystickButton(xbox, 3);
-  //   pullButton = new JoystickButton(xbox, 4);
-  // }
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new DropCubeAuto();
+    return new AlignWithTag(15, 3); //TODO: Add deadzone
+    // return new GyroTurn(90, 0.1, 0.0, 0.02);
+    // return new DriveDistance(4,0.05);
+    // return new DropCubeAuto();
   }
 }

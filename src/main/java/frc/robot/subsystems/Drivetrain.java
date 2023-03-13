@@ -21,6 +21,7 @@ public class Drivetrain extends SubsystemBase {
   public void setSpeedMultiplier(double multiplier) {
     speedMultiplier = multiplier;
   }
+
   public double getSpeedMultiplier() {
     return speedMultiplier;
   }
@@ -29,12 +30,14 @@ public class Drivetrain extends SubsystemBase {
     stop();
   }
 
-  public void tankDrive(double left, double right){
-    RobotMap.left.set(Math.min(1, -left * speedMultiplier));
-    RobotMap.right.set(Math.min(1, -right * speedMultiplier));
+  public void tankDrive(double left, double right) {
+    // RobotMap.left.set(Math.min(1, -left * speedMultiplier));
+    // RobotMap.right.set(Math.min(1, -right * speedMultiplier));
+    RobotMap.left.set(left);
+    RobotMap.right.set(-right);
   }
 
-  public void stop(){
+  public void stop() {
     RobotMap.left.stopMotor();
     RobotMap.right.stopMotor();
   }
@@ -48,4 +51,5 @@ public class Drivetrain extends SubsystemBase {
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+
 }

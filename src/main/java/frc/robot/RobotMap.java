@@ -9,6 +9,10 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.revrobotics.RelativeEncoder;
 
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.I2C;
+
 public class RobotMap {
     
     public static final CANSparkMax arm = new CANSparkMax(1, MotorType.kBrushed);
@@ -25,11 +29,14 @@ public class RobotMap {
 
     public static final RelativeEncoder rightMotorEncoder = right.getEncoder();
     public static final RelativeEncoder leftMotorEncoder = left.getEncoder();
+    public static final AHRS gyro = new AHRS(SPI.Port.kMXP);
 
     public static void init()  {
+        rightMotorEncoder.setPositionConversionFactor(4/256);
+        leftMotorEncoder.setPositionConversionFactor(4/256);
         rightSlave.follow(right);
         leftSlave.follow(left);
         follower.follow(actuator);
-
+        gyro.calibrate();
     }
 }

@@ -39,7 +39,7 @@ public class OI {
         if(Math.abs(kleft) <= 0.1){
           return 0;
         } else {
-          return -kleft*Math.abs(kleft); //Math.abs to preserve sign
+          return kleft*Math.abs(kleft); //Math.abs to preserve sign
         }
       }
     

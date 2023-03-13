@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.RobotContainer;
 
+
 /** A complex auto command that drives forward, releases a hatch, and then drives backward. */
 public class DropCubeAuto extends SequentialCommandGroup {
   /**
@@ -13,7 +14,11 @@ public class DropCubeAuto extends SequentialCommandGroup {
    */
   public DropCubeAuto() {
     addCommands(
-        // Drive forward the specified distance
-        new DriveDistance(100, 0.4));
+        // Drive forward until area of apriltag is certain value (limelight)
+        new DriveDistance(10000, 0.05));
+        // (Maybe) Raise arm to highest cube position
+        // (Maybe) Open clamps
+        // Drive back onto charge station and dock (straight back, back and left, back and right)
+        // 
   }
 }

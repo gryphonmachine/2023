@@ -32,7 +32,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-  public static AHRS imu; 
   public static NetworkTable limelight;
   public static NetworkTableEntry ll_x;
   public static NetworkTableEntry ll_y;  /**
@@ -43,11 +42,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-     try {
-          imu = new AHRS(SPI.Port.kMXP); 
-      } catch (RuntimeException ex ) {
-          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
-      }
+    RobotMap.init();
     m_robotContainer = new RobotContainer();
     limelight = NetworkTableInstance.getDefault().getTable("limelight");
     ll_x = limelight.getEntry("tx");
@@ -96,7 +91,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-
   }
 
   @Override
@@ -110,7 +104,6 @@ public class Robot extends TimedRobot {
     }
     DriverStation.reportWarning("Calibrating IMU. Please do not move the robot.", true);
     Timer.delay(3);
-    imu.calibrate();
     DriverStation.reportWarning("Finished Calibrating IMU.", true);
   }
 
