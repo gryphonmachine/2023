@@ -27,7 +27,7 @@ public class Pneumatics extends SubsystemBase {
     // boolean pressureSwitch = pcmCompressor.getPressureSwitchValue();
     // double current = pcmCompressor.getCurrent();
 
-    doublePCM = new DoubleSolenoid(4, PneumaticsModuleType.REVPH, 0,1);
+    doublePCM = new DoubleSolenoid(4, PneumaticsModuleType.REVPH, 1,0);
     doublePCM.set(Value.kReverse);
     // pcmCompressor = new Compressor(0, PneumaticsModuleType.REVPH);
   }

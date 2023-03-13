@@ -20,12 +20,12 @@ public class Arm extends SubsystemBase {
 
   // x pulls down & holds in place
   public void pull(){
-    this.arm.set(-0.05);
+    this.arm.set(1);
   }
 
   // y key pushes up
   public void push(){
-    this.arm.set(-0.25);
+    this.arm.set(-1);
   }
 
   public void stop(){
