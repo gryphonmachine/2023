@@ -4,24 +4,21 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
-public class GyroTurn extends CommandBase {
+public class DriveUntilAngle extends CommandBase {
   
   private PIDController pid;
-  private final double kP;
-  private final double kI;
-  private final double kD;
+  private final double speed;
   private final double setpoint;
 
-  public GyroTurn(double setpoint, double kP, double kI, double kD) {
+  public DriveUntilAngle(double setpoint, double speed) {
     // Store the setpoint and PID gains
     
-    this.setpoint = RobotMap.gyro.getAngle() + setpoint;
-    this.kP = kP;
-    this.kI = kI;
-    this.kD = kD;
+    this.setpoint = RobotMap.gyro.getRoll() + setpoint;
+    this.speed = speed;
     // Require the drivetrain subsystem
     addRequirements(RobotContainer.drivetrain);
   }
@@ -29,26 +26,22 @@ public class GyroTurn extends CommandBase {
   @Override
   public void initialize() {
     // Initialize the PID controller with the gains and setpoint
-    pid = new PIDController(this.kP, this.kI, this.kD);
-    pid.setTolerance(5, 10);
-    pid.setIntegratorRange(-0.5, 0.5);
-
+    System.out.println("Moving back until angle exceeds " + this.speed);
   }
   
 
   // Called repeatedly when this Command is scheduled to run
     @Override
     public void execute() {
-        double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.setpoint);
-        System.out.println(this.setpoint - RobotMap.gyro.getAngle());
-        double bounded = MathUtil.clamp(speedAmount, -0.1, 0.1);
-        RobotContainer.drivetrain.tankDrive(bounded, -bounded);
+      System.out.println(RobotMap.gyro.getRoll());
+        // RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
     }
 
   @Override
   public boolean isFinished() {
+    return false;
     // Return true when the PID controller is on target
-    return pid.atSetpoint();
+    // return pid.atSetpoint();
   }
 
   @Override

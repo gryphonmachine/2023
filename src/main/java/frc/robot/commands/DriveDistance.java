@@ -35,10 +35,14 @@ public class DriveDistance extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     @Override
     public void execute() {
-        // System.out.println("Driving in autonomous");
-        System.out.println(RobotMap.rightMotorEncoder.getPosition());
-
-        RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
+        try {
+            if (RobotMap.rightMotorEncoder.equals(distance) || RobotMap.leftMotorEncoder.equals(distance) ) {end(true);}
+            RobotContainer.drivetrain.tankDrive(speed, speed);
+        }
+        catch(Exception e) {
+            System.out.println("DriveDistance exception:");
+            e.printStackTrace();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
