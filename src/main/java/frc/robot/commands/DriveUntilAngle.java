@@ -26,7 +26,8 @@ public class DriveUntilAngle extends CommandBase {
   @Override
   public void initialize() {
     // Initialize the PID controller with the gains and setpoint
-    System.out.println("Moving back until angle exceeds " + this.speed);
+    
+    System.out.println("Moving back until angle exceeds " + this.setpoint);
   }
   
 
@@ -34,12 +35,12 @@ public class DriveUntilAngle extends CommandBase {
     @Override
     public void execute() {
       System.out.println(RobotMap.gyro.getRoll());
-        // RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
+      RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
     }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return (this.setpoint - 2 < RobotMap.gyro.getRoll() && RobotMap.gyro.getRoll() < this.setpoint + 3);
     // Return true when the PID controller is on target
     // return pid.atSetpoint();
   }

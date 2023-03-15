@@ -15,7 +15,8 @@ public class ChargeStationMovements extends SequentialCommandGroup {
   public ChargeStationMovements() {
     addCommands(
         // Drive b ack until gyro angle exceeds threshold
-        new DriveUntilAngle(80, -0.2)
+        new DriveUntilAngle(12, -0.3),
+        new DriveUntilAngle(0, -0.15)
         // Drive back until gyro angle goes back to 90.
     );
   }

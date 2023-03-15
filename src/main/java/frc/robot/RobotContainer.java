@@ -6,10 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.StartPneumatics;
-import frc.robot.commands.StartDriving;
-import frc.robot.commands.StartActuators;
-import frc.robot.commands.StartArm;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Vision;
@@ -63,7 +59,8 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new AlignWithTag(15, 3); //TODO: Add deadzone
+    return new ChargeStationMovements();
+    // return new AlignWithTag(15, 3); //TODO: Add deadzone
     // return new GyroTurn(90, 0.1, 0.0, 0.02);
     // return new DriveDistance(4,0.05);
     // return new DropCubeAuto();
