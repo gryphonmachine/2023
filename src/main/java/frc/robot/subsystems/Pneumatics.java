@@ -4,21 +4,21 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 public class Pneumatics extends SubsystemBase {
 
-//   Compressor pcmCompressor;
+  //   Compressor pcmCompressor;
 
   /** Creates a new Chassis. */
   public Pneumatics() {
     // Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-   
+
     // pcmCompressor.enableAnalog(0, 130);
     // pcmCompressor.disable();
 

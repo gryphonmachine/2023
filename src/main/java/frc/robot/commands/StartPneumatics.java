@@ -5,11 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.OI;
 
 public class StartPneumatics extends CommandBase {
+
   /** Creates a new StartPneumatics. */
   public StartPneumatics() {
     addRequirements(RobotContainer.pneumatics);
@@ -24,7 +25,7 @@ public class StartPneumatics extends CommandBase {
   public void execute() {
     if (OI.solenoidOffButton.getAsBoolean()) {
       RobotContainer.pneumatics.solenoidBack();
-    } else if(OI.solenoidButton.getAsBoolean()) {
+    } else if (OI.solenoidButton.getAsBoolean()) {
       RobotContainer.pneumatics.solenoidForward();
     }
   }

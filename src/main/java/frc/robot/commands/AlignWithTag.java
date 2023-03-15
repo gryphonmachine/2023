@@ -7,61 +7,60 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
-import edu.wpi.first.math.MathUtil;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.*;
-import edu.wpi.first.math.controller.PIDController;
 
 public class AlignWithTag extends CommandBase {
 
-    final double deadzone;
-    public double targetArea;
-    public double setPointArea;
+  final double deadzone;
+  public double targetArea;
+  public double setPointArea;
 
-    // private PIDController pid;
+  // private PIDController pid;
 
-    public AlignWithTag(double setPointArea, double deadzone) {
-        addRequirements(RobotContainer.drivetrain);
-        this.setPointArea = setPointArea;
-        this.deadzone = deadzone;
-    }
+  public AlignWithTag(double setPointArea, double deadzone) {
+    addRequirements(RobotContainer.drivetrain);
+    this.setPointArea = setPointArea;
+    this.deadzone = deadzone;
+  }
 
-    // Called just before this Command runs the first time
-    @Override
-    public void initialize() {
-        System.out.println("Initializing tag alignment");
-        // pid = new PIDController(0.1, 0, 0);
-        // pid.setTolerance(5, 10);
-        // pid.setIntegratorRange(-0.5, 0.5);
-        System.out.println("Target Area:" + targetArea);
-    }
+  // Called just before this Command runs the first time
+  @Override
+  public void initialize() {
+    System.out.println("Initializing tag alignment");
+    // pid = new PIDController(0.1, 0, 0);
+    // pid.setTolerance(5, 10);
+    // pid.setIntegratorRange(-0.5, 0.5);
+    System.out.println("Target Area:" + targetArea);
+  }
 
-    // Called repeatedly when this Command is scheduled to run
-    @Override
-    public void execute() {
-        this.targetArea = RobotContainer.vision.getTargetArea();
-        System.out.println(RobotMap.rightMotorEncoder.getPosition());
-        
-        // double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.targetArea);
-        // double bounded = MathUtil.clamp(speedAmount, -0.1, 0.1);
-        RobotContainer.drivetrain.tankDrive(0.1, 0.1);
-    }
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  public void execute() {
+    this.targetArea = RobotContainer.vision.getTargetArea();
+    System.out.println(RobotMap.rightMotorEncoder.getPosition());
 
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
-    public boolean isFinished() {
-        return this.targetArea >= this.setPointArea;
-    }
+    // double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.targetArea);
+    // double bounded = MathUtil.clamp(speedAmount, -0.1, 0.1);
+    RobotContainer.drivetrain.tankDrive(0.1, 0.1);
+  }
 
-    // Called once after isFinished returns true
-    @Override
-    public void end(boolean interrupted) {
-        RobotContainer.drivetrain.stop();
-    }
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  public boolean isFinished() {
+    return this.targetArea >= this.setPointArea;
+  }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+  // Called once after isFinished returns true
+  @Override
+  public void end(boolean interrupted) {
+    RobotContainer.drivetrain.stop();
+  }
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
 }

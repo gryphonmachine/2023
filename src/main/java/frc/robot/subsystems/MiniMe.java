@@ -4,9 +4,9 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class MiniMe extends SubsystemBase {
 
@@ -14,24 +14,23 @@ public class MiniMe extends SubsystemBase {
     stop();
   }
 
-
-  public void pull(){
-    if(!RobotMap.armSwitch.get()){
+  public void pull() {
+    if (!RobotMap.armSwitch.get()) {
       RobotMap.actuator.set(-1);
     } else {
       RobotMap.actuator.set(1);
     }
   }
 
-  public void push(){
-    if(!RobotMap.actuatorSwitch.get()){
+  public void push() {
+    if (!RobotMap.actuatorSwitch.get()) {
       RobotMap.actuator.set(1);
     } else {
       RobotMap.actuator.set(-1);
     }
   }
 
-  public void stop(){
+  public void stop() {
     RobotMap.actuator.stopMotor();
   }
 

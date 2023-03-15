@@ -4,11 +4,11 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
+import frc.robot.RobotMap;
 
 public class Arm extends SubsystemBase {
 
@@ -19,16 +19,16 @@ public class Arm extends SubsystemBase {
   }
 
   // x pulls down & holds in place
-  public void pull(){
+  public void pull() {
     RobotMap.arm.set(-1);
   }
 
   // y key pushes up\
-  public void push(){
+  public void push() {
     RobotMap.arm.set(1);
   }
 
-  public void stop(){
+  public void stop() {
     RobotMap.arm.stopMotor();
   }
 
