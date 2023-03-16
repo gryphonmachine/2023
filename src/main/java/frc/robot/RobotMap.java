@@ -7,9 +7,7 @@ public class RobotMap {
     public static final int CONTROLLER_PORT = 0;
 
     // ACTUATOR MOTORS
-    public static final int actuator = 7;
-    public static final int actuatorFollower  = 8;
-    public static final int arm = 1;
+    public static final int arm = 7;
 
     // DRIVETRAIN MOTORS
     public static final int right = 5;

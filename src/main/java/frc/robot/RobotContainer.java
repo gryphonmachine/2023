@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.StartPneumatics;
 import frc.robot.commands.StartDriving;
-import frc.robot.commands.StartActuators;
+// import frc.robot.commands.StartActuators;
 import frc.robot.commands.StartArm;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.MiniMe;
+// import frc.robot.subsystems.MiniMe;
 import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -30,7 +30,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Drivetrain drivetrain;
-  public static MiniMe miniMe;
+  // public static MiniMe miniMe;
   public static Arm arm; 
   public static Pneumatics pneumatics;
   public static DigitalInput actuatorSwitch;
@@ -40,8 +40,8 @@ public class RobotContainer {
   public static XboxController xbox1;
   public static JoystickButton solenoidButton;
   public static JoystickButton solenoidOffButton;
-  public static JoystickButton pushButton;
-  public static JoystickButton pullButton;
+  // public static JoystickButton pushButton;
+  // public static JoystickButton pullButton;
   public static JoystickButton liftArmButton;
   public static JoystickButton dropArmButton;
 
@@ -50,7 +50,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     drivetrain = new Drivetrain();
-    miniMe = new MiniMe();
+    // miniMe = new MiniMe();
     arm = new Arm();
     pneumatics = new Pneumatics();
     actuatorSwitch = new DigitalInput(1);
@@ -59,7 +59,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     drivetrain.setDefaultCommand(new StartDriving());
-    miniMe.setDefaultCommand(new StartActuators());
+    // miniMe.setDefaultCommand(new StartActuators());
     arm.setDefaultCommand(new StartArm());
     pneumatics.setDefaultCommand(new StartPneumatics());
   }
@@ -90,13 +90,13 @@ public class RobotContainer {
     return solenoidOffButton.getAsBoolean();
   }
 
-  public static boolean getPushButton() {
-    return pushButton.getAsBoolean();
-  }
+  // public static boolean getPushButton() {
+  //   return pushButton.getAsBoolean();
+  // }
 
-  public static boolean getPullButton() {
-    return pullButton.getAsBoolean();
-  }
+  // public static boolean getPullButton() {
+  //   return pullButton.getAsBoolean();
+  // }
 
   public static boolean getLiftArmButton() {
     return liftArmButton.getAsBoolean();
@@ -123,8 +123,6 @@ public class RobotContainer {
     solenoidOffButton = new JoystickButton(xbox, 2);
     liftArmButton = new JoystickButton(xbox, 5);
     dropArmButton = new JoystickButton(xbox, 6);
-    pushButton= new JoystickButton(xbox, 3);
-    pullButton = new JoystickButton(xbox, 4);
   }
 
   /**
