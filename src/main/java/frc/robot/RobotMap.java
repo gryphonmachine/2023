@@ -15,13 +15,11 @@ import edu.wpi.first.wpilibj.I2C;
 
 public class RobotMap {
     
-    public static final CANSparkMax arm = new CANSparkMax(1, MotorType.kBrushed);
+    public static final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushed);
     public static final CANSparkMax right = new CANSparkMax(5, MotorType.kBrushless);
     public static final CANSparkMax left = new CANSparkMax(2, MotorType.kBrushless);
     public static final CANSparkMax rightSlave = new CANSparkMax(6, MotorType.kBrushless);
     public static final CANSparkMax leftSlave = new CANSparkMax(3, MotorType.kBrushless);
-    public static final CANSparkMax actuator = new CANSparkMax(7, MotorType.kBrushed);
-    public static final CANSparkMax follower = new CANSparkMax(8, MotorType.kBrushed);
 
     public static final DoubleSolenoid claw = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
     public static final DigitalInput actuatorSwitch = new DigitalInput(1);
@@ -36,7 +34,6 @@ public class RobotMap {
         leftMotorEncoder.setPositionConversionFactor(4/256);
         rightSlave.follow(right);
         leftSlave.follow(left);
-        follower.follow(actuator);
         gyro.calibrate();
     }
 }

@@ -11,6 +11,7 @@ import frc.robot.OI;
 
 public class StartPneumatics extends CommandBase {
   /** Creates a new StartPneumatics. */
+  boolean prev;
   public StartPneumatics() {
     addRequirements(RobotContainer.pneumatics);
   }
@@ -22,9 +23,12 @@ public class StartPneumatics extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (OI.solenoidOffButton.getAsBoolean()) {
+    boolean value = OI.solenoidOffButton.getAsBoolean();
+    // Toggle it if it was recently pressed and is now released
+    if (!value && prev) {
       RobotContainer.pneumatics.toggleClaw();
     }
+    this.prev = value;
   }
 
   // Called once the command ends or is interrupted.

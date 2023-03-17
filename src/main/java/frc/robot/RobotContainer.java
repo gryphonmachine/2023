@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Vision;
-import frc.robot.subsystems.MiniMe;
 import frc.robot.subsystems.Arm;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -28,7 +27,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Drivetrain drivetrain;
-  public static MiniMe miniMe;
   public static Arm arm; 
   public static Pneumatics pneumatics;
   public static Vision vision;
@@ -40,7 +38,6 @@ public class RobotContainer {
    */
   public RobotContainer() {
     drivetrain = new Drivetrain();
-    miniMe = new MiniMe();
     arm = new Arm();
     pneumatics = new Pneumatics();
     vision = new Vision();
@@ -48,7 +45,6 @@ public class RobotContainer {
     // armSwitch = new DigitalInput(7);
 
     drivetrain.setDefaultCommand(new StartDriving());
-    miniMe.setDefaultCommand(new StartActuators());
     arm.setDefaultCommand(new StartArm());
     pneumatics.setDefaultCommand(new StartPneumatics());
   }
