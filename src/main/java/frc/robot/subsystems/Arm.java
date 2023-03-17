@@ -26,6 +26,10 @@ public class Arm extends SubsystemBase {
     RobotMap.arm.set(1);
   }
 
+  public void keep() {
+    RobotMap.arm.set(0.3);
+  }
+
   public void stop() {
     RobotMap.arm.stopMotor();
   }

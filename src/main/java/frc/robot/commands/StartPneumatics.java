@@ -24,7 +24,7 @@ public class StartPneumatics extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    boolean value = OI.solenoidOffButton.getAsBoolean();
+    boolean value = OI.solenoidToggleButton.getAsBoolean();
     // Toggle it if it was recently pressed and is now released
     if (!value && prev) {
       RobotContainer.pneumatics.toggleClaw();

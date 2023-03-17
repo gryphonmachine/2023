@@ -29,11 +29,7 @@ public class OI {
     public static final int BUTTON_RSTICK = 10;
   }
 
-  public static JoystickButton solenoidButton = new JoystickButton(
-    driverController,
-    ControllerMap.BUTTON_A
-  );
-  public static JoystickButton solenoidOffButton = new JoystickButton(
+  public static JoystickButton solenoidToggleButton = new JoystickButton(
     driverController,
     ControllerMap.BUTTON_B
   );
@@ -45,17 +41,13 @@ public class OI {
     driverController,
     ControllerMap.RBUMPER
   );
-  public static JoystickButton pushButton = new JoystickButton(
+  public static JoystickButton keepButton = new JoystickButton(
     driverController,
-    ControllerMap.BUTTON_X
-  );
-  public static JoystickButton pullButton = new JoystickButton(
-    driverController,
-    ControllerMap.BUTTON_Y
+    ControllerMap.BUTTON_RSTICK
   );
 
-  public static double getYLeft() {
-    return driverController.getRightY();
+  public static double getRightX() {
+    return driverController.getRightX();
     // if (Math.abs(kleft) <= 0.1) {
     //   return 0;
     // } else {
@@ -63,7 +55,7 @@ public class OI {
     // }
   }
 
-  public static double getYRight() {
+  public static double getLeftY() {
     return driverController.getLeftY();
   //   if (Math.abs(kright) <= 0.1) {
   //     return 0;
