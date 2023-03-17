@@ -55,20 +55,20 @@ public class OI {
   );
 
   public static double getYLeft() {
-    double kleft = driverController.getLeftY();
-    if (Math.abs(kleft) <= 0.1) {
-      return 0;
-    } else {
-      return -kleft * Math.abs(kleft); //Math.abs to preserve sign
-    }
+    return driverController.getRightY();
+    // if (Math.abs(kleft) <= 0.1) {
+    //   return 0;
+    // } else {
+    //   return -kleft * Math.abs(kleft); //Math.abs to preserve sign
+    // }
   }
 
   public static double getYRight() {
-    double kright = driverController.getRightY();
-    if (Math.abs(kright) <= 0.1) {
-      return 0;
-    } else {
-      return -kright * Math.abs(kright); //Math.abs to preserve sign
-    }
+    return driverController.getLeftY();
+  //   if (Math.abs(kright) <= 0.1) {
+  //     return 0;
+  //   } else {
+  //     return -kright * Math.abs(kright); //Math.abs to preserve sign
+  //   }
   }
 }

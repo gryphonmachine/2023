@@ -1,14 +1,11 @@
 package frc.robot;
 
 import com.kauailabs.navx.frc.AHRS;
-//PORT DECLARATIONS
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
 
@@ -37,7 +34,6 @@ public class RobotMap {
     0,
     1
   );
-  public static final DigitalInput actuatorSwitch = new DigitalInput(1);
   public static final DigitalInput armSwitch = new DigitalInput(7);
 
   public static final RelativeEncoder rightMotorEncoder = right.getEncoder();

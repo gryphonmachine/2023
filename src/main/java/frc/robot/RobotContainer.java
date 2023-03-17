@@ -5,10 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
@@ -31,7 +28,6 @@ public class RobotContainer {
   public static Arm arm;
   public static Pneumatics pneumatics;
   public static Vision vision;
-  public static DigitalInput actuatorSwitch;
   public static DigitalInput armSwitch;
 
   /**
@@ -42,7 +38,6 @@ public class RobotContainer {
     arm = new Arm();
     pneumatics = new Pneumatics();
     vision = new Vision();
-    // actuatorSwitch = new DigitalInput(1);
     // armSwitch = new DigitalInput(7);
 
     drivetrain.setDefaultCommand(new StartDriving());

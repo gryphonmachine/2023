@@ -1,7 +1,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.RobotContainer;
 
 /** A complex auto command that drives forward, releases a hatch, and then drives backward. */
 public class ChargeStationMovements extends SequentialCommandGroup {
