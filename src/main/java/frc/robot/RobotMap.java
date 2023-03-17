@@ -23,7 +23,7 @@ public class RobotMap {
     public static final CANSparkMax actuator = new CANSparkMax(7, MotorType.kBrushed);
     public static final CANSparkMax follower = new CANSparkMax(8, MotorType.kBrushed);
 
-    public static final DoubleSolenoid doublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
+    public static final DoubleSolenoid claw = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
     public static final DigitalInput actuatorSwitch = new DigitalInput(1);
     public static final DigitalInput armSwitch = new DigitalInput(7);
 

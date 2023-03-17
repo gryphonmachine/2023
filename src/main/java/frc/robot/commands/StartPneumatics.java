@@ -23,9 +23,7 @@ public class StartPneumatics extends CommandBase {
   @Override
   public void execute() {
     if (OI.solenoidOffButton.getAsBoolean()) {
-      RobotContainer.pneumatics.solenoidBack();
-    } else if(OI.solenoidButton.getAsBoolean()) {
-      RobotContainer.pneumatics.solenoidForward();
+      RobotContainer.pneumatics.toggleClaw();
     }
   }
 

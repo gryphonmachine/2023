@@ -21,6 +21,7 @@ public class StartArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
     if(OI.dropArmButton.getAsBoolean()) {
       RobotContainer.arm.pull();
     } else if(OI.liftArmButton.getAsBoolean()) {

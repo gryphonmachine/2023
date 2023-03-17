@@ -17,7 +17,7 @@ public class DriveUntilAngle extends CommandBase {
   public DriveUntilAngle(double setpoint, double speed) {
     // Store the setpoint and PID gains
     
-    this.setpoint = RobotMap.gyro.getRoll() + setpoint;
+    this.setpoint = RobotMap.gyro.getRoll() + setpoint; // this boutta be a prolem (set it to only setpoint)
     this.speed = speed;
     // Require the drivetrain subsystem
     addRequirements(RobotContainer.drivetrain);

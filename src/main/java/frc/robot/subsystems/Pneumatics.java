@@ -13,23 +13,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Pneumatics extends SubsystemBase {
 
-//   Compressor pcmCompressor;
-
-  /** Creates a new Chassis. */
   public Pneumatics() {
-    // Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-   
-    // pcmCompressor.enableAnalog(0, 130);
-    // pcmCompressor.disable();
-
-    // boolean enabled = pcmCompressor.isEnabled();
-    // boolean pressureSwitch = pcmCompressor.getPressureSwitchValue();
-    // double current = pcmCompressor.getCurrent();
-
-    // doublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0,1);
-    // doublePCM.set(Value.kReverse);
-    // pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
-    solenoidBack();
+    closeClaw();
   }
 
   @Override
@@ -37,13 +22,15 @@ public class Pneumatics extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void solenoidForward() {
-    RobotMap.doublePCM.set(Value.kForward);
-    // pcmCompressor.enableDigital();
+  public void toggleClaw() {
+    RobotMap.claw.toggle();
   }
 
-  public void solenoidBack() {
-    RobotMap.doublePCM.set(Value.kReverse);
-    // pcmCompressor.disable();
+  public void openClaw() {
+    RobotMap.claw.set(Value.kForward);
+  }
+
+  public void closeClaw() {
+    RobotMap.claw.set(Value.kReverse);
   }
 }
