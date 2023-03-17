@@ -15,52 +15,58 @@ import frc.robot.subsystems.*;
 
 public class DriveDistance extends CommandBase {
 
-    final double distance;
-    final double speed;
+  final double distance;
+  final double speed;
 
-    public DriveDistance(double distance, double speed) {
-        addRequirements(RobotContainer.drivetrain);
-        this.speed = speed;
-        this.distance = distance;
+  public DriveDistance(double distance, double speed) {
+    addRequirements(RobotContainer.drivetrain);
+    this.speed = speed;
+    this.distance = distance;
+  }
+
+  // Called just before this Command runs the first time
+  @Override
+  public void initialize() {
+    RobotMap.rightMotorEncoder.setPosition(0);
+    RobotMap.leftMotorEncoder.setPosition(0);
+    System.out.println("Initialized autonomous");
+  }
+
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  public void execute() {
+    try {
+      if (
+        RobotMap.rightMotorEncoder.equals(distance) ||
+        RobotMap.leftMotorEncoder.equals(distance)
+      ) {
+        end(true);
+      }
+      RobotContainer.drivetrain.tankDrive(speed, speed);
+    } catch (Exception e) {
+      System.out.println("DriveDistance exception:");
+      e.printStackTrace();
     }
+  }
 
-    // Called just before this Command runs the first time
-    @Override
-    public void initialize() {
-        RobotMap.rightMotorEncoder.setPosition(0);
-        RobotMap.leftMotorEncoder.setPosition(0);
-        System.out.println("Initialized autonomous");
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  public boolean isFinished() {
+    if (
+      RobotMap.rightMotorEncoder.getPosition() >= distance ||
+      RobotMap.leftMotorEncoder.getPosition() >= distance
+    ) {
+      RobotContainer.drivetrain.stop();
+      return true;
     }
+    return false;
+  }
 
-    // Called repeatedly when this Command is scheduled to run
-    @Override
-    public void execute() {
-        try {
-            if (RobotMap.rightMotorEncoder.equals(distance) || RobotMap.leftMotorEncoder.equals(distance) ) {end(true);}
-            RobotContainer.drivetrain.tankDrive(speed, speed);
-        }
-        catch(Exception e) {
-            System.out.println("DriveDistance exception:");
-            e.printStackTrace();
-        }
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
-    public boolean isFinished() {
-        if (RobotMap.rightMotorEncoder.getPosition() >= distance ||RobotMap.leftMotorEncoder.getPosition() >= distance){
-            RobotContainer.drivetrain.stop();
-            return true;
-        }
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    @Override
-    public void end(boolean interrupted) {
-        RobotContainer.drivetrain.stop();
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+  // Called once after isFinished returns true
+  @Override
+  public void end(boolean interrupted) {
+    RobotContainer.drivetrain.stop();
+  }
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
 }
