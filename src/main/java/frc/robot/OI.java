@@ -61,6 +61,12 @@ public class OI {
   //     return 0;
   //   } else {
   //     return -kright * Math.abs(kright); //Math.abs to preserve sign
-  //   }
+    }
+  public static double getYLeft() {
+    return driverController.getLeftY();
+  }
+
+  public static double getYRight() {
+    return driverController.getRightY();
   }
 }
