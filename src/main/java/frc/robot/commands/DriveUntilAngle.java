@@ -22,13 +22,13 @@ public class DriveUntilAngle extends CommandBase {
   public void initialize() {
     // Initialize the PID controller with the gains and setpoint
 
-    System.out.println("Moving back until angle exceeds " + this.setpoint);
+    System.out.println("Moving back until angle exceeds " + this.setpoint + ". Current value:" + RobotMap.gyro.getRoll());
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    System.out.println(RobotMap.gyro.getRoll());
+    System.out.println("Current: " + RobotMap.gyro.getRoll() + ", Setpoint: " + this.setpoint);
     RobotContainer.drivetrain.tankDrive(this.speed, this.speed);
   }
 
