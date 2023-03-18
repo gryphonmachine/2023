@@ -44,7 +44,7 @@ public class RobotMap {
   public static final RelativeEncoder rightMotorEncoder = right.getEncoder();
   public static final RelativeEncoder leftMotorEncoder = left.getEncoder();
   public static final AHRS gyro = new AHRS(SPI.Port.kMXP);
-  public static final AnalogInput pressureSensor = new AnalogInput(0);
+  // public static final AnalogInput pressureSensor = new AnalogInput(0);
   public static final Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
   
   public static void init() {

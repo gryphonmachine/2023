@@ -19,19 +19,19 @@ public class Pneumatics extends SubsystemBase {
 
   @Override
   public void periodic() {
-    double rawVoltage = RobotMap.pressureSensor.getVoltage();
-    double pressure = (rawVoltage-0.47)*(110/(2.7-0.47));
-    // 110 -> 2.7
-    // 0 -> 0.47
+    // double rawVoltage = RobotMap.pressureSensor.getVoltage();
+    // double pressure = (rawVoltage-0.47)*(110/(2.7-0.47));
+    // // 110 -> 2.7
+    // // 0 -> 0.47
 
-    System.out.println("Pressure " + pressure);
-    if (pressure > 70) {
-      System.out.println("Disabling");
-      RobotMap.pcmCompressor.disable();
-    } else if (pressure < 40) {
-      System.out.println("Enabling");
-      RobotMap.pcmCompressor.enableDigital();
-    }
+    // System.out.println("Pressure " + pressure);
+    // if (pressure > 70) {
+    //   System.out.println("Disabling");
+    //   RobotMap.pcmCompressor.disable();
+    // } else if (pressure < 40) {
+    //   System.out.println("Enabling");
+    //   RobotMap.pcmCompressor.enableDigital();
+    // }
     // This method will be called once per scheduler run
   }
 
