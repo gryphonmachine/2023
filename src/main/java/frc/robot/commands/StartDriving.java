@@ -33,8 +33,8 @@ public class StartDriving extends CommandBase {
   public void execute() {
     // RobotContainer.drivetrain.tankDrive(OI.getYLeft(), OI.getYRight());
     drivetrain.arcadeDrive(
-      -OI.getYLeft(),
-      -OI.getYRight()
+      -OI.getRightX(),
+      -OI.getLeftY()
     );
   }
 

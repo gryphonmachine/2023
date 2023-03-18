@@ -26,6 +26,8 @@ public class StartArm extends CommandBase {
       RobotContainer.arm.pull();
     } else if (OI.liftArmButton.getAsBoolean()) {
       RobotContainer.arm.push();
+    } else if (OI.keepButton.getAsBoolean()) {
+      RobotContainer.arm.keep();
     } else {
       RobotContainer.arm.stop();
     }
