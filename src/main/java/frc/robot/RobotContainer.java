@@ -10,7 +10,6 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Pneumatics;
-import frc.robot.subsystems.Vision;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -27,7 +26,6 @@ public class RobotContainer {
   public static Drivetrain drivetrain;
   public static Arm arm;
   public static Pneumatics pneumatics;
-  public static Vision vision;
   public static DigitalInput armSwitch;
 
   /**
@@ -37,7 +35,6 @@ public class RobotContainer {
     drivetrain = new Drivetrain();
     arm = new Arm();
     pneumatics = new Pneumatics();
-    vision = new Vision();
     // armSwitch = new DigitalInput(7);
 
     drivetrain.setDefaultCommand(new StartDriving());

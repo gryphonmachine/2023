@@ -38,7 +38,6 @@ public class AlignWithTag extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    this.targetArea = RobotContainer.vision.getTargetArea();
     System.out.println(RobotMap.rightMotorEncoder.getPosition());
 
     // double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.targetArea);

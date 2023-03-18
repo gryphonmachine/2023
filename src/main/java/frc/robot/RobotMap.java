@@ -8,8 +8,28 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class RobotMap {
+
+  // VISION
+  public static final NetworkTable limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
+
+  public static double getLimelightArea () {
+    NetworkTableEntry ta = limelightTable.getEntry("ta");
+    return ta.getDouble(0.0);
+  }
+  public static double getLimelightX () {
+    NetworkTableEntry tx = limelightTable.getEntry("tx");
+    return tx.getDouble(0.0);
+  }
+  public static double getLimelightY () {
+    NetworkTableEntry ty = limelightTable.getEntry("ty");
+    return ty.getDouble(0.0);
+  }
+  // MOTORS
 
   public static final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushed);
   public static final CANSparkMax right = new CANSparkMax(
