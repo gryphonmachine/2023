@@ -37,6 +37,7 @@ public class Arm extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    System.out.println(RobotMap.getLimelightArea()); 
   }
 
   @Override

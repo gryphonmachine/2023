@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.auto;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
@@ -38,7 +38,6 @@ public class AlignWithTag extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    this.targetArea = RobotContainer.vision.getTargetArea();
     System.out.println(RobotMap.rightMotorEncoder.getPosition());
 
     // double speedAmount = pid.calculate(RobotMap.gyro.getAngle(), this.targetArea);

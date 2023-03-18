@@ -1,6 +1,7 @@
-package frc.robot.commands;
+package frc.robot.commands.auto;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.DriveDistance;
 
 /** A complex auto command that drives forward, releases a hatch, and then drives backward. */
 public class ChargeStationMovements extends SequentialCommandGroup {
@@ -14,6 +15,7 @@ public class ChargeStationMovements extends SequentialCommandGroup {
   public ChargeStationMovements() {
     addCommands(
       // Drive b ack until gyro angle exceeds threshold
+      new DriveDistance(10, 0.3),
       new DriveUntilAngle(12, -0.3),
       new DriveUntilAngle(-12, -0.15)
       // Drive back until gyro angle goes back to 90.
