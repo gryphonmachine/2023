@@ -75,6 +75,8 @@ public class RobotMap {
     leftMotorEncoder.setPositionConversionFactor(4 / 256);
     rightSlave.follow(right);
     leftSlave.follow(left);
-    gyro.calibrate();
+    // Set camera to driver view mode;
+    limelightTable.getEntry("camMode").setNumber(1);
+
   }
 }
