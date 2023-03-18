@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -67,6 +68,8 @@ public class RobotMap {
   public static final AnalogInput pressureSensor = new AnalogInput(0);
   public static final Compressor pcmCompressor = new Compressor(0, PneumaticsModuleType.CTREPCM);
   
+  public static InstantCommand calibrateGyro = new InstantCommand(() -> {gyro.calibrate();});
+
   public static void init() {
     rightMotorEncoder.setPositionConversionFactor(4 / 256);
     leftMotorEncoder.setPositionConversionFactor(4 / 256);
