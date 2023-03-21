@@ -10,12 +10,12 @@ public class MoveForward {
     double time = Timer.getFPGATimestamp();
 
     if (time - Robot.startTime < 3) {
-      RobotMap.left.set(0.6);
       RobotMap.right.set(0.6);
+      RobotMap.left.set(0.6);
       // RobotMap.right.set(-0.6)
     } else {
-      RobotMap.left.set(0);
       RobotMap.right.set(0);
+      RobotMap.left.set(0);
       // RobotMap.left.stopMotor();
       // RobotMap.right.stopMotor();
     }

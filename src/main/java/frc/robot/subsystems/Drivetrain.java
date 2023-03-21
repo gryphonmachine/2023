@@ -10,7 +10,7 @@ import frc.robot.RobotMap;
 
 public class Drivetrain extends SubsystemBase {
 
-  private final static DifferentialDrive drivetrain = new DifferentialDrive(
+  private static final DifferentialDrive drivetrain = new DifferentialDrive(
     RobotMap.left,
     RobotMap.right
   );

@@ -6,10 +6,11 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.auto.MoveForward;
 
 public class Robot extends TimedRobot {
+
   public static double startTime;
 
   @Override
-  public void robotInit() {    
+  public void robotInit() {
     RobotMap.start();
     new RobotContainer();
   }
