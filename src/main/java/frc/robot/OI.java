@@ -1,4 +1,3 @@
-// Operator Interface
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
@@ -48,25 +47,9 @@ public class OI {
 
   public static double getRightX() {
     return driverController.getRightX();
-    // if (Math.abs(kleft) <= 0.1) {
-    //   return 0;
-    // } else {
-    //   return -kleft * Math.abs(kleft); //Math.abs to preserve sign
-    // }
   }
 
   public static double getLeftY() {
     return driverController.getLeftY();
-  //   if (Math.abs(kright) <= 0.1) {
-  //     return 0;
-  //   } else {
-  //     return -kright * Math.abs(kright); //Math.abs to preserve sign
-    }
-  public static double getYLeft() {
-    return driverController.getLeftY();
-  }
-
-  public static double getYRight() {
-    return driverController.getRightY();
   }
 }

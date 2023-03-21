@@ -4,10 +4,16 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Drivetrain extends SubsystemBase {
+
+  private final static DifferentialDrive drivetrain = new DifferentialDrive(
+    RobotMap.left,
+    RobotMap.right
+  );
 
   // SPEED MULTIPLIER for ramp up on controller
   public double speedMultiplier = 1.0;
@@ -24,11 +30,8 @@ public class Drivetrain extends SubsystemBase {
     stop();
   }
 
-  public void tankDrive(double left, double right) {
-    // RobotMap.left.set(Math.min(1, -left * speedMultiplier));
-    // RobotMap.right.set(Math.min(1, -right * speedMultiplier));
-    RobotMap.left.set(left);
-    RobotMap.right.set(-right);
+  public static void tankDrive(double xSpeed, double zRotation) {
+    drivetrain.arcadeDrive(xSpeed, zRotation);
   }
 
   public void stop() {
@@ -37,12 +40,8 @@ public class Drivetrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+  public void periodic() {}
 
   @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
-  }
+  public void simulationPeriodic() {}
 }
