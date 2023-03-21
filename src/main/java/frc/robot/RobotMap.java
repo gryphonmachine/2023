@@ -3,7 +3,6 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
-import frc.robot.commands.Gyro;
 
 public class RobotMap {
 
@@ -33,6 +32,5 @@ public class RobotMap {
     leftMotorEncoder.setPositionConversionFactor(4 / 256);
     rightSlave.follow(RobotMap.right);
     leftSlave.follow(RobotMap.left);
-    Gyro.calibrate();
   }
 }
