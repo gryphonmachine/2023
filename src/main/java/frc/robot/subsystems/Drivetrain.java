@@ -11,7 +11,7 @@ public class Drivetrain extends SubsystemBase {
     RobotMap.right
   );
 
-  public static void tankDrive(double xSpeed, double zRotation) {
+  public static void drive(double xSpeed, double zRotation) {
     drivetrain.arcadeDrive(xSpeed, zRotation);
   }
 

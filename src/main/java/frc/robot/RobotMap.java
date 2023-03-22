@@ -3,6 +3,10 @@ package frc.robot;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 
 public class RobotMap {
 
@@ -22,6 +26,20 @@ public class RobotMap {
   public static final CANSparkMax leftSlave = new CANSparkMax(
     3,
     MotorType.kBrushless
+  );
+
+  public static final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushed);
+
+  public static final DoubleSolenoid claw = new DoubleSolenoid(
+    PneumaticsModuleType.CTREPCM,
+    0,
+    1
+  );
+
+  public static final AnalogInput pressureSensor = new AnalogInput(0);
+  public static final Compressor pcmCompressor = new Compressor(
+    0,
+    PneumaticsModuleType.CTREPCM
   );
 
   // Encoders

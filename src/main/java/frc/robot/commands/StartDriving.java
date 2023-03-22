@@ -13,6 +13,6 @@ public class StartDriving extends CommandBase {
 
   @Override
   public void execute() {
-    Drivetrain.tankDrive(-OI.getRightX(), -OI.getLeftY());
+    Drivetrain.drive(-OI.getRightX(), -OI.getLeftY());
   }
 }

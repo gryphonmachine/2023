@@ -11,10 +11,10 @@ public class Robot extends TimedRobot {
 
   // Autonomous: Motor Speeds
   private static final double FORWARD_SPEED = 0.2; // Speed to move forward at
-  // private static final double BACKWARD_SPEED = -0.2; // Speed to move backward at
+  private static final double BACKWARD_SPEED = -0.2; // Speed to move backward at
   private static final double FORWARD_TIME = 3.0; // Time to move forward in seconds
 
-  // private static final double BACKWARD_TIME = 5.0; // Time to move backward in seconds
+  private static final double BACKWARD_TIME = 5.0; // Time to move backward in seconds
 
   @Override
   public void robotInit() {
@@ -64,16 +64,9 @@ public class Robot extends TimedRobot {
     // Drive forward for x seconds
     while (timer.get() < FORWARD_TIME) {
       RobotMap.right.set(-FORWARD_SPEED);
-      RobotMap.left.set(FORWARD_SPEED);
+      RobotMap.left.set(-FORWARD_SPEED);
     }
 
-    // Turn robot 180 degrees
-    Drivetrain.tankDrive(FORWARD_SPEED, 0.5);
-
-    // Turn motors off
-    RobotMap.right.set(0);
-    RobotMap.left.set(0);
-    // Stop for 1 second
     // RobotMap.right.set(0);
     // RobotMap.left.set(0);
     // Timer.delay(1);
@@ -82,9 +75,13 @@ public class Robot extends TimedRobot {
     // timer.reset();
     // timer.start();
     // while (timer.get() < BACKWARD_TIME) {
-    //   RobotMap.right.set(-BACKWARD_SPEED);
+    //   RobotMap.right.set(BACKWARD_SPEED);
     //   RobotMap.left.set(BACKWARD_SPEED);
     // }
+
+    // Turn motors off
+    RobotMap.right.set(0);
+    RobotMap.left.set(0);
   }
 
   @Override
