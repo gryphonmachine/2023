@@ -6,7 +6,7 @@ import com.revrobotics.RelativeEncoder;
 
 public class RobotMap {
 
-  // MOTORS
+  // Motors
   public static final CANSparkMax right = new CANSparkMax(
     5,
     MotorType.kBrushless
@@ -24,13 +24,14 @@ public class RobotMap {
     MotorType.kBrushless
   );
 
+  // Encoders
   public static final RelativeEncoder rightMotorEncoder = right.getEncoder();
   public static final RelativeEncoder leftMotorEncoder = left.getEncoder();
 
   public static void start() {
-    rightMotorEncoder.setPositionConversionFactor(4 / 256);
-    leftMotorEncoder.setPositionConversionFactor(4 / 256);
-    rightSlave.follow(RobotMap.right);
-    leftSlave.follow(RobotMap.left);
+    rightMotorEncoder.setPositionConversionFactor(4.0 / 256.0);
+    leftMotorEncoder.setPositionConversionFactor(4.0 / 256.0);
+    rightSlave.follow(right);
+    leftSlave.follow(left);
   }
 }
