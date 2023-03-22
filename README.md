@@ -1,8 +1,7 @@
-# FIRST Robotics: FRC 6070
-2023 Codebase
+# FIRST Robotics: FRC 6070 [2023]
 
 ## Autonomous Routine
-```bash
+```
 Move robot forwards for X seconds to pass community zone at X speed,
 then turns 180 degrees getting ready for teleop
 
