@@ -16,10 +16,10 @@ public class Pneumatics extends SubsystemBase {
     double pressure = (rawVoltage - 0.47) * (110 / (2.7 - 0.47));
     System.out.println("Pressure: " + pressure);
 
-    if (pressure > 70) {
+    if (pressure > 30) {
       System.out.println("Disabling Compressor");
       RobotMap.pcmCompressor.disable();
-    } else if (pressure < 40) {
+    } else if (pressure < 30) {
       System.out.println("Enabling Compressor");
       RobotMap.pcmCompressor.enableDigital();
     }
