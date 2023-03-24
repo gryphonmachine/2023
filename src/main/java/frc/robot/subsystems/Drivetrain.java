@@ -11,6 +11,10 @@ public class Drivetrain extends SubsystemBase {
     RobotMap.right
   );
 
+  public Drivetrain() {
+    stop();
+  }
+
   public static void drive(double xSpeed, double zRotation) {
     drivetrain.arcadeDrive(xSpeed, zRotation);
   }
@@ -18,4 +22,10 @@ public class Drivetrain extends SubsystemBase {
   public void stop() {
     drivetrain.stopMotor();
   }
+
+  @Override
+  public void periodic() {}
+
+  @Override
+  public void simulationPeriodic() {}
 }

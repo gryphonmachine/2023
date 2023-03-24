@@ -8,13 +8,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class Robot extends TimedRobot {
 
-  // Autonomous: Motor Speeds
-  private static final double FORWARD_SPEED = 0.2;
-  private static final double FORWARD_TIME = 5.0; // seconds
-
-  // private static final double BACKWARD_SPEED = -0.2;
-  // private static final double BACKWARD_TIME = 5.0; // seconds
-
   @Override
   public void robotInit() {
     RobotMap.start();
@@ -44,23 +37,30 @@ public class Robot extends TimedRobot {
     timer.reset();
     timer.start();
 
+    RobotMap.right.setInverted(true);
+    RobotMap.left.setInverted(true);
+
     // Drive forward for x seconds
-    while (timer.get() < FORWARD_TIME) {
-      RobotMap.right.set(-FORWARD_SPEED);
-      RobotMap.left.set(-FORWARD_SPEED);
+    while (timer.get() < RobotMap.FORWARD_TIME) {
+      RobotMap.right.set(RobotMap.FORWARD_SPEED);
+      RobotMap.left.set(-RobotMap.FORWARD_SPEED);
     }
 
-    // RobotMap.right.set(0);
-    // RobotMap.left.set(0);
-    // Timer.delay(1);
+    RobotMap.right.set(0);
+    RobotMap.left.set(0);
+    Timer.delay(1);
 
-    // // Drive backward for 3 seconds
-    // timer.reset();
-    // timer.start();
-    // while (timer.get() < BACKWARD_TIME) {
-    //   RobotMap.right.set(BACKWARD_SPEED);
-    //   RobotMap.left.set(BACKWARD_SPEED);
-    // }
+    RobotMap.right.setInverted(false);
+    RobotMap.left.setInverted(false);
+
+    // Drive backward for 3 seconds
+    timer.reset();
+    timer.start();
+
+    while (timer.get() < RobotMap.BACKWARD_TIME) {
+      RobotMap.right.set(-RobotMap.BACKWARD_SPEED);
+      RobotMap.left.set(RobotMap.BACKWARD_SPEED);
+    }
 
     // Turn motors off
     RobotMap.right.set(0);

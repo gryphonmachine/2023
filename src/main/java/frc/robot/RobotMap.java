@@ -42,6 +42,13 @@ public class RobotMap {
     PneumaticsModuleType.CTREPCM
   );
 
+  // Autonomous: Motor Speeds
+  public static final double FORWARD_SPEED = 0.3;
+  public static final double FORWARD_TIME = 2.0; // seconds
+
+  public static final double BACKWARD_SPEED = -0.3;
+  public static final double BACKWARD_TIME = 2.0; // seconds
+
   // Encoders
   public static final RelativeEncoder rightMotorEncoder = right.getEncoder();
   public static final RelativeEncoder leftMotorEncoder = left.getEncoder();
