@@ -5,6 +5,7 @@ import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.auto.util.DriveDistance;
 
 public class Robot extends TimedRobot {
 
@@ -48,7 +49,7 @@ public class Robot extends TimedRobot {
 
     RobotMap.right.set(0);
     RobotMap.left.set(0);
-    Timer.delay(1);
+    // Timer.delay(1);
 
     RobotMap.right.setInverted(false);
     RobotMap.left.setInverted(false);
@@ -57,10 +58,11 @@ public class Robot extends TimedRobot {
     timer.reset();
     timer.start();
 
-    while (timer.get() < RobotMap.BACKWARD_TIME) {
-      RobotMap.right.set(-RobotMap.BACKWARD_SPEED);
-      RobotMap.left.set(RobotMap.BACKWARD_SPEED);
-    }
+
+    // while (timer.get() < RobotMap.BACKWARD_TIME) {
+    //   RobotMap.right.set(-RobotMap.BACKWARD_SPEED);
+    //   RobotMap.left.set(RobotMap.BACKWARD_SPEED);
+    // }
 
     // Turn motors off
     RobotMap.right.set(0);
@@ -68,7 +70,10 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    
+    new DriveDistance(1,0.1);
+  }
 
   @Override
   public void teleopInit() {}

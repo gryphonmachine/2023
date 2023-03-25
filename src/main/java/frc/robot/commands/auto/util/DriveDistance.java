@@ -1,44 +1,59 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands.auto.util;
 
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.RobotMap;
 
-public class DriveDistance {
+public class DriveDistance extends CommandBase {
 
-  private static final double WHEEL_DIAMETER = 6; // inches
-  private static final double ENCODER_TICKS_PER_REV = 1024;
-  private static final double GEAR_RATIO = 1;
-  private static final double DISTANCE_PER_TICK =
-    (Math.PI * WHEEL_DIAMETER) / (ENCODER_TICKS_PER_REV * GEAR_RATIO);
-
-  private Encoder leftEncoder;
-  private Encoder rightEncoder;
-  private DifferentialDrive robotDrive;
-
-  public DriveDistance(
-    Encoder leftEncoder,
-    Encoder rightEncoder,
-    DifferentialDrive robotDrive
-  ) {
-    this.leftEncoder = leftEncoder;
-    this.rightEncoder = rightEncoder;
-    this.robotDrive = robotDrive;
+  final double distance;
+  final double speed;
+  double calibrationFactor = 1/95.6;
+  public DriveDistance(double distance, double speed) {
+    addRequirements(RobotContainer.drivetrain);
+    this.speed = speed;
+    this.distance = distance;
   }
 
-  public void drive(double distance) {
-    double targetTicks = distance / DISTANCE_PER_TICK;
-    double initialLeftTicks = leftEncoder.get();
-    double initialRightTicks = rightEncoder.get();
-    double leftSpeed = 0.5;
-    double rightSpeed = 0.5;
+  // Called just before this Command runs the first time
+  @Override
+  public void initialize() {
+    RobotMap.rightMotorEncoder.setPosition(0);
+    RobotMap.leftMotorEncoder.setPosition(0);
+    System.out.println("Initialized autonomous");
+  }
 
-    while (
-      Math.abs(leftEncoder.get() - initialLeftTicks) < Math.abs(targetTicks) ||
-      Math.abs(rightEncoder.get() - initialRightTicks) < Math.abs(targetTicks)
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  public void execute() {
+    RobotContainer.drivetrain.drive(this.speed, 0);
+  }
+
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  public boolean isFinished() {
+    if (
+      RobotMap.rightMotorEncoder.getPosition() >= distance*this.calibrationFactor ||
+      RobotMap.leftMotorEncoder.getPosition() >= distance*this.calibrationFactor
     ) {
-      robotDrive.tankDrive(leftSpeed, rightSpeed);
+      RobotContainer.drivetrain.stop();
+      return true;
     }
-
-    robotDrive.stopMotor();
+    return false;
   }
+
+  // Called once after isFinished returns true
+  @Override
+  public void end(boolean interrupted) {
+    RobotContainer.drivetrain.stop();
+  }
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
 }

@@ -15,7 +15,7 @@ public class Drivetrain extends SubsystemBase {
     stop();
   }
 
-  public static void drive(double xSpeed, double zRotation) {
+  public void drive(double xSpeed, double zRotation) {
     drivetrain.arcadeDrive(xSpeed, zRotation);
   }
 
