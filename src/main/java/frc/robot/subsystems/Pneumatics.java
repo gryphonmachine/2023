@@ -33,11 +33,11 @@ public class Pneumatics extends SubsystemBase {
     }
   }
 
-  public void openClaw() {
+  public static void openClaw() {
     RobotMap.claw.set(DoubleSolenoid.Value.kForward);
   }
 
-  public void closeClaw() {
+  public static void closeClaw() {
     RobotMap.claw.set(DoubleSolenoid.Value.kReverse);
   }
 }

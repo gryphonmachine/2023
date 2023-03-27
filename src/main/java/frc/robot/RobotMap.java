@@ -43,11 +43,11 @@ public class RobotMap {
   );
 
   // Autonomous: Motor Speeds
-  public static final double FORWARD_SPEED = 0.3;
-  public static final double FORWARD_TIME = 2.0; // seconds
+  public static final double FORWARD_SPEED = 0.5;
+  public static final double FORWARD_TIME = 0.15; // seconds
 
-  public static final double BACKWARD_SPEED = -0.3;
-  public static final double BACKWARD_TIME = 2.0; // seconds
+  public static final double BACKWARD_SPEED = -0.5;
+  public static final double BACKWARD_TIME = 1.5; // seconds
 
   // Encoders
   public static final RelativeEncoder rightMotorEncoder = right.getEncoder();
