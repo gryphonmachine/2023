@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -20,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   private final Drivetrain s_drivetrain = new Drivetrain();
+  private final Claw s_claw = new Claw();
 
   public RobotContainer() {
     configureBindings();
@@ -32,7 +34,7 @@ public class RobotContainer {
 
     // // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // // cancelling on release.
-    // m_driverController.b().whileTrue(s_drivetrain.exampleMethodCommand());
+    OI.controller.b().toggleOnTrue(s_claw.clawToggleCommand());
   }
 
   /**

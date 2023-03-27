@@ -28,7 +28,15 @@ public class RobotMap {
     MotorType.kBrushless
   );
 
+  // ARM
   public static final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushed);
+
+  // CLAW
+  public static final DoubleSolenoid clawPiston = new DoubleSolenoid(
+    PneumaticsModuleType.CTREPCM,
+    0,
+    1
+  );
 
   public static final Compressor pcmCompressor = new Compressor(
     0,
