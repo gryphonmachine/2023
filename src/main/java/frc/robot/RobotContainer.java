@@ -49,6 +49,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     // return new DriveDistance(s_drivetrain, 0.05, 5);
-    return Autos.AutoOne(s_drivetrain);
+    return Autos.AutoOne(s_drivetrain, s_arm, s_claw);
   }
 }

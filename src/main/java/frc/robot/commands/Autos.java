@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -11,9 +13,12 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public final class Autos {
   /** Example static factory for an autonomous command. */
-  public static CommandBase AutoOne(Drivetrain drivetrain) {
+  public static CommandBase AutoOne(Drivetrain drivetrain, Arm arm, Claw claw) {
     return Commands.sequence(
       new DriveDistance(drivetrain, 0.05, 5), 
+      arm.pushArmCommand().withTimeout(0.25),
+      arm.stopArmCommand(),
+      claw.clawToggleCommand(),
       new DriveDistance(drivetrain, -0.05, 5)
     );
   }

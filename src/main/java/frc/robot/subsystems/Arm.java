@@ -24,7 +24,7 @@ public class Arm extends SubsystemBase {
         });
     }
     public CommandBase stopArmCommand() {
-    return run(
+    return runOnce(
         () -> {
             this.stop();
         });
