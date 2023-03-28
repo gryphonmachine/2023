@@ -15,12 +15,11 @@ public final class Autos {
   /** Example static factory for an autonomous command. */
   public static CommandBase AutoOne(Drivetrain drivetrain, Arm arm, Claw claw) {
     return Commands.sequence(
-      new DriveDistance(drivetrain, 0.05, 5), 
-      arm.pushArmCommand().withTimeout(0.25),
-      arm.stopArmCommand(),
-      claw.clawToggleCommand(),
-      new DriveDistance(drivetrain, -0.05, 5)
-    );
+        new DriveDistance(drivetrain, 0.05, 5),
+        arm.pushArmCommand().withTimeout(0.25),
+        arm.stopArmCommand(),
+        claw.clawToggleCommand(),
+        new DriveDistance(drivetrain, -0.05, 5));
   }
 
   private Autos() {

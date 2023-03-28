@@ -12,36 +12,30 @@ public class RobotMap {
 
   // Motors
   public static final CANSparkMax rightDriveMotor = new CANSparkMax(
-    5,
-    MotorType.kBrushless
-  );
+      5,
+      MotorType.kBrushless);
   public static final CANSparkMax leftDriveMotor = new CANSparkMax(
-    2,
-    MotorType.kBrushless
-  );
+      2,
+      MotorType.kBrushless);
   public static final CANSparkMax rightDriveFollower = new CANSparkMax(
-    6,
-    MotorType.kBrushless
-  );
+      6,
+      MotorType.kBrushless);
   public static final CANSparkMax leftDriveFollower = new CANSparkMax(
-    3,
-    MotorType.kBrushless
-  );
+      3,
+      MotorType.kBrushless);
 
   // ARM
   public static final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushed);
 
   // CLAW
   public static final DoubleSolenoid clawPiston = new DoubleSolenoid(
-    PneumaticsModuleType.CTREPCM,
-    0,
-    1
-  );
+      PneumaticsModuleType.CTREPCM,
+      0,
+      1);
 
   public static final Compressor pcmCompressor = new Compressor(
-    0,
-    PneumaticsModuleType.CTREPCM
-  );
+      0,
+      PneumaticsModuleType.CTREPCM);
 
   // Encoders
   public static final RelativeEncoder rightMotorEncoder = rightDriveMotor.getEncoder();

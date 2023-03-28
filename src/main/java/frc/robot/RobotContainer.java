@@ -15,9 +15,12 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in
+ * the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of
+ * the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
@@ -32,9 +35,10 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     // new Trigger(s_drivetrain::exampleCondition)
-    //     .onTrue(new ExampleCommand(s_drivetrain));
+    // .onTrue(new ExampleCommand(s_drivetrain));
 
-    // // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
+    // // Schedule `exampleMethodCommand` when the Xbox controller's B button is
+    // pressed,
     // // cancelling on release.
     OI.controller.leftBumper().whileTrue(s_arm.pullArmCommand());
     OI.controller.rightBumper().whileTrue(s_arm.pushArmCommand());

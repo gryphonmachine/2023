@@ -5,30 +5,31 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-
 public class Arm extends SubsystemBase {
-    public Arm() {
-      setDefaultCommand(stopArmCommand());
-    }
+  public Arm() {
+    setDefaultCommand(stopArmCommand());
+  }
 
-    public CommandBase pullArmCommand() {
+  public CommandBase pullArmCommand() {
     return run(
         () -> {
-            this.pull();
+          this.pull();
         });
-    }
-    public CommandBase pushArmCommand() {
+  }
+
+  public CommandBase pushArmCommand() {
     return run(
         () -> {
-            this.push();
+          this.push();
         });
-    }
-    public CommandBase stopArmCommand() {
+  }
+
+  public CommandBase stopArmCommand() {
     return runOnce(
         () -> {
-            this.stop();
+          this.stop();
         });
-    }
+  }
 
   public void pull() {
     RobotMap.arm.set(-1);

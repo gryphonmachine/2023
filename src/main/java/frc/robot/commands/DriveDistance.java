@@ -8,7 +8,6 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-
 public class DriveDistance extends CommandBase {
   private final Drivetrain drivetrain;
   private final double speed;
@@ -27,7 +26,7 @@ public class DriveDistance extends CommandBase {
     drivetrain.setRightEncoder(0);
     drivetrain.setLeftEncoder(0);
   }
-  
+
   @Override
   public void execute() {
     encoderValue = (Math.abs(drivetrain.getRightEncoder()) + Math.abs(drivetrain.getLeftEncoder())) / 2;

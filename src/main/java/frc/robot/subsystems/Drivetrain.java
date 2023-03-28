@@ -14,11 +14,9 @@ import frc.robot.OI;
 public class Drivetrain extends SubsystemBase {
 
   private static final DifferentialDrive differentialDriver = new DifferentialDrive(
-    RobotMap.leftDriveMotor,
-    RobotMap.rightDriveMotor
-  );
+      RobotMap.leftDriveMotor,
+      RobotMap.rightDriveMotor);
 
-  
   public Drivetrain() {
     // RobotMap.rightDriveMotor.setInverted(true);
     // RobotMap.rightDriveFollower.setInverted(true);
@@ -36,31 +34,35 @@ public class Drivetrain extends SubsystemBase {
   public void driveArcade(double speed, double rotationRate) {
     differentialDriver.arcadeDrive(speed, rotationRate);
   }
+
   public void driveTank(double leftSpeed, double rightSpeed) {
     differentialDriver.tankDrive(leftSpeed, rightSpeed);
   }
+
   public void driveSolo(double leftSpeed, double rightSpeed) {
     RobotMap.leftDriveMotor.set(-leftSpeed);
     RobotMap.rightDriveMotor.set(rightSpeed);
   }
+
   public void stop() {
     differentialDriver.stopMotor();
   }
 
-
   public double getRightEncoder() {
     return RobotMap.rightMotorEncoder.getPosition();
   }
+
   public double getLeftEncoder() {
     return RobotMap.leftMotorEncoder.getPosition();
   }
+
   public void setLeftEncoder(double position) {
     RobotMap.leftMotorEncoder.setPosition(position);
   }
+
   public void setRightEncoder(double position) {
     RobotMap.rightMotorEncoder.setPosition(position);
   }
-
 
   @Override
   public void periodic() {
