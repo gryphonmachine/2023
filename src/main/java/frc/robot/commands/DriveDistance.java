@@ -9,11 +9,11 @@ public class DriveDistance extends CommandBase {
   private final double speed;
   private final double distance;
   private double encoderValue = 0;
-  private double calibrationFactor = 0.56;
+  private double calibrationFactor = 50 / 88.5;
 
   /**
    * @param distance inches
-   * */
+   */
   public DriveDistance(Drivetrain subsystem, double speed, double distance) {
     this.drivetrain = subsystem;
     this.speed = speed;
@@ -29,14 +29,13 @@ public class DriveDistance extends CommandBase {
 
   @Override
   public void execute() {
-    encoderValue =
-      (
-        Math.abs(drivetrain.getRightEncoder()) +
-        Math.abs(drivetrain.getLeftEncoder())
-      ) /
-      2;
+    encoderValue = (Math.abs(drivetrain.getRightEncoder()) +
+        Math.abs(drivetrain.getLeftEncoder())) /
+        2;
     System.out.println(encoderValue);
     this.drivetrain.driveSolo(this.speed, this.speed);
+    // this.drivetrain.driveArcade(this.speed, 0);
+
   }
 
   @Override
@@ -47,6 +46,6 @@ public class DriveDistance extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return encoderValue > this.distance * 0.56;
+    return encoderValue > this.distance * this.calibrationFactor;
   }
 }

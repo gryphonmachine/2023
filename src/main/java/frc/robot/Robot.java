@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -14,6 +16,11 @@ public class Robot extends TimedRobot {
     RobotMap.rightMotorEncoder.setPosition(0);
     RobotMap.leftMotorEncoder.setPosition(0);
     m_robotContainer = new RobotContainer();
+
+    UsbCamera LifeCam = CameraServer.startAutomaticCapture();
+    LifeCam.setResolution(320, 240);
+    LifeCam.setFPS(30);
+    CameraServer.putVideo("LifeCam Feed", 320, 240);
   }
 
   @Override
@@ -28,15 +35,12 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+  }
 
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    if (isAutonomous()) {
-      System.out.println("AUTONOMOUS Enabled");
-    }
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -44,7 +48,8 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+  }
 
   @Override
   public void teleopInit() {
@@ -54,7 +59,8 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+  }
 
   @Override
   public void testInit() {
@@ -62,11 +68,14 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+  }
 
   @Override
-  public void simulationInit() {}
+  public void simulationInit() {
+  }
 
   @Override
-  public void simulationPeriodic() {}
+  public void simulationPeriodic() {
+  }
 }
