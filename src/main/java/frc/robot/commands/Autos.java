@@ -7,12 +7,15 @@ package frc.robot.commands;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 public final class Autos {
   /** Example static factory for an autonomous command. */
-  public static CommandBase exampleAuto(Drivetrain drivetrain) {
-    return Commands.sequence(new DriveDistance(drivetrain, 0.1, 10));
-    // return new DriveDistance(drivetrain, 0.1, 10);
+  public static CommandBase AutoOne(Drivetrain drivetrain) {
+    return Commands.sequence(
+      new DriveDistance(drivetrain, 0.05, 5), 
+      new DriveDistance(drivetrain, -0.05, 5)
+    );
   }
 
   private Autos() {

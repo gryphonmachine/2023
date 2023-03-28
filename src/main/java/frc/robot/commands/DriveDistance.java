@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
 public class DriveDistance extends CommandBase {
-  // @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain drivetrain;
   private final double speed;
   private final double distance;
@@ -20,19 +19,15 @@ public class DriveDistance extends CommandBase {
     this.drivetrain = subsystem;
     this.speed = speed;
     this.distance = distance;
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(drivetrain);
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     drivetrain.setRightEncoder(0);
     drivetrain.setLeftEncoder(0);
-    // drivetrain.driveArcade(0, 0);
   }
   
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     encoderValue = (Math.abs(drivetrain.getRightEncoder()) + Math.abs(drivetrain.getLeftEncoder())) / 2;
@@ -40,16 +35,14 @@ public class DriveDistance extends CommandBase {
     this.drivetrain.driveSolo(this.speed, this.speed);
   }
 
-  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    System.out.println("Finished a drivedistance");
     drivetrain.stop();
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // return false;
     return encoderValue > this.distance;
   }
 }
