@@ -9,6 +9,7 @@ public class DriveDistance extends CommandBase {
   private final double speed;
   private final double distance;
   private double encoderValue = 0;
+  private double calibrationFactor = 0.56;
 
   /**
    * @param distance inches
@@ -46,6 +47,6 @@ public class DriveDistance extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return encoderValue > this.distance;
+    return encoderValue > this.distance * 0.56;
   }
 }
