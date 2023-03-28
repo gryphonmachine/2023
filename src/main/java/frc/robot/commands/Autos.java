@@ -10,11 +10,12 @@ import edu.wpi.first.wpilibj2.command.Commands;
 
 public final class Autos {
   /** Example static factory for an autonomous command. */
-  // public static CommandBase exampleAuto(Drivetrain subsystem) {
-  //   return Commands.sequence(subsystem.exampleMethodCommand(), new ExampleCommand(subsystem));
-  // }
+  public static CommandBase exampleAuto(Drivetrain drivetrain) {
+    return Commands.sequence(new DriveDistance(drivetrain, 0.1, 10));
+    // return new DriveDistance(drivetrain, 0.1, 10);
+  }
 
-  // private Autos() {
-  //   throw new UnsupportedOperationException("This is a utility class!");
-  // }
+  private Autos() {
+    throw new UnsupportedOperationException("This is a utility class!");
+  }
 }

@@ -20,6 +20,8 @@ public class Drivetrain extends SubsystemBase {
 
   
   public Drivetrain() {
+    // RobotMap.rightDriveMotor.setInverted(true);
+    // RobotMap.rightDriveFollower.setInverted(true);
     setDefaultCommand(OIDrive());
     stop();
   }
@@ -36,6 +38,10 @@ public class Drivetrain extends SubsystemBase {
   }
   public void driveTank(double leftSpeed, double rightSpeed) {
     differentialDriver.tankDrive(leftSpeed, rightSpeed);
+  }
+  public void driveSolo(double leftSpeed, double rightSpeed) {
+    RobotMap.leftDriveMotor.set(-leftSpeed);
+    RobotMap.rightDriveMotor.set(rightSpeed);
   }
   public void stop() {
     differentialDriver.stopMotor();
@@ -54,6 +60,7 @@ public class Drivetrain extends SubsystemBase {
   public void setRightEncoder(double position) {
     RobotMap.rightMotorEncoder.setPosition(position);
   }
+
 
   @Override
   public void periodic() {

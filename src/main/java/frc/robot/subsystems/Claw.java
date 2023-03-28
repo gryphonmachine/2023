@@ -8,7 +8,7 @@ import frc.robot.RobotMap;
 
 public class Claw extends SubsystemBase {
     public Claw() {
-        closeClaw();
+        openClaw();
     }
 
     public CommandBase clawToggleCommand() {

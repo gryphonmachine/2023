@@ -27,6 +27,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+    RobotMap.rightMotorEncoder.setPosition(0);
+    RobotMap.leftMotorEncoder.setPosition(0);
     m_robotContainer = new RobotContainer();
   }
 
@@ -48,7 +50,10 @@ public class Robot extends TimedRobot {
 
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    RobotMap.rightMotorEncoder.setPosition(0);
+    RobotMap.leftMotorEncoder.setPosition(0);
+  }
 
   @Override
   public void disabledPeriodic() {}
@@ -56,6 +61,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -66,7 +72,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    // System.out.println("Autonomous running");
+  } 
 
   @Override
   public void teleopInit() {

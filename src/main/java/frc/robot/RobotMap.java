@@ -48,7 +48,6 @@ public class RobotMap {
   public static final RelativeEncoder leftMotorEncoder = leftDriveMotor.getEncoder();
 
   public static void initRobotMap() {
-    rightDriveMotor.setInverted(true);
     // rightMotorEncoder.setPositionConversionFactor(4.0 / 256.0);
     // leftMotorEncoder.setPositionConversionFactor(4.0 / 256.0);
     rightDriveFollower.follow(rightDriveMotor);
