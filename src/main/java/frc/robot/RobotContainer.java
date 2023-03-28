@@ -1,7 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.Autos;
+import frc.robot.commands.auto.ScoreGamePiece;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.Drivetrain;
@@ -26,6 +26,6 @@ public class RobotContainer {
 
   // Autonomous Routines
   public Command getAutonomousCommand() {
-    return Autos.AutoOne(s_drivetrain, s_arm, s_claw);
+    return ScoreGamePiece.run(s_drivetrain, s_arm, s_claw);
   }
 }

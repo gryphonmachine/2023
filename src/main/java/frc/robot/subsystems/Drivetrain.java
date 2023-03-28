@@ -14,8 +14,6 @@ public class Drivetrain extends SubsystemBase {
   );
 
   public Drivetrain() {
-    // RobotMap.rightDriveMotor.setInverted(true);
-    // RobotMap.rightDriveFollower.setInverted(true);
     setDefaultCommand(OIDrive());
     stop();
   }
@@ -26,23 +24,28 @@ public class Drivetrain extends SubsystemBase {
     });
   }
 
+  // Arcade Drive
   public void driveArcade(double speed, double rotationRate) {
     differentialDriver.arcadeDrive(speed, rotationRate);
   }
 
+  // Tank Drive
   public void driveTank(double leftSpeed, double rightSpeed) {
     differentialDriver.tankDrive(leftSpeed, rightSpeed);
   }
 
+  // DriveDistance Drive
   public void driveSolo(double leftSpeed, double rightSpeed) {
     RobotMap.leftDriveMotor.set(-leftSpeed);
     RobotMap.rightDriveMotor.set(rightSpeed);
   }
 
+  // Stop Motors
   public void stop() {
     differentialDriver.stopMotor();
   }
 
+  // Encoders
   public double getRightEncoder() {
     return RobotMap.rightMotorEncoder.getPosition();
   }

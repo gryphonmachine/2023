@@ -25,10 +25,12 @@ public class Claw extends SubsystemBase {
     }
   }
 
+  // Toggle & Open Piston
   public static void openClaw() {
     RobotMap.clawPiston.set(DoubleSolenoid.Value.kForward);
   }
 
+  // Un-Toggle & Close Piston
   public static void closeClaw() {
     RobotMap.clawPiston.set(DoubleSolenoid.Value.kReverse);
   }

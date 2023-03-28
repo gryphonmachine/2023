@@ -10,6 +10,9 @@ public class DriveDistance extends CommandBase {
   private final double distance;
   private double encoderValue = 0;
 
+  /**
+   * @param distance inches
+   * */
   public DriveDistance(Drivetrain subsystem, double speed, double distance) {
     this.drivetrain = subsystem;
     this.speed = speed;
@@ -37,7 +40,7 @@ public class DriveDistance extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-    System.out.println("Finished a drivedistance");
+    System.out.println("DriveDistance Completed");
     drivetrain.stop();
   }
 

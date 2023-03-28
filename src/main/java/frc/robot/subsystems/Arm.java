@@ -28,14 +28,17 @@ public class Arm extends SubsystemBase {
     });
   }
 
+  // Retract arm
   public void pull() {
     RobotMap.arm.set(-1);
   }
 
+  // Extend arm
   public void push() {
     RobotMap.arm.set(1);
   }
 
+  // Stop Arm Motor
   public void stop() {
     RobotMap.arm.stopMotor();
   }
