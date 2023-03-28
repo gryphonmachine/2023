@@ -1,21 +1,17 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
 import frc.robot.OI;
+import frc.robot.RobotMap;
 
 public class Drivetrain extends SubsystemBase {
 
   private static final DifferentialDrive differentialDriver = new DifferentialDrive(
-      RobotMap.leftDriveMotor,
-      RobotMap.rightDriveMotor);
+    RobotMap.leftDriveMotor,
+    RobotMap.rightDriveMotor
+  );
 
   public Drivetrain() {
     // RobotMap.rightDriveMotor.setInverted(true);
@@ -25,10 +21,9 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public CommandBase OIDrive() {
-    return run(
-        () -> {
-          this.driveArcade(OI.getTurnJoystick(), OI.getDriveJoystick());
-        });
+    return run(() -> {
+      this.driveArcade(OI.getTurnJoystick(), OI.getDriveJoystick());
+    });
   }
 
   public void driveArcade(double speed, double rotationRate) {
@@ -65,10 +60,8 @@ public class Drivetrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-  }
+  public void periodic() {}
 
   @Override
-  public void simulationPeriodic() {
-  }
+  public void simulationPeriodic() {}
 }

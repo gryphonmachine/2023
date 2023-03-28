@@ -6,15 +6,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Claw extends SubsystemBase {
+
   public Claw() {
     openClaw();
   }
 
   public CommandBase clawToggleCommand() {
-    return runOnce(
-        () -> {
-          this.toggleClaw();
-        });
+    return runOnce(() -> {
+      this.toggleClaw();
+    });
   }
 
   public void toggleClaw() {
