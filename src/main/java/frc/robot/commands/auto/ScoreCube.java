@@ -23,11 +23,11 @@ public final class ScoreCube {
 
   public static CommandBase run(Drivetrain drivetrain) {
     return Commands.sequence(
-      new DriveDistance(drivetrain, 0.5, 15),
+      new DriveDistance(drivetrain, 0.5, 10),
       new WaitCommand(0.5),
-      new DriveDistance(drivetrain, -0.25, 20),
+      new DriveDistance(drivetrain, -0.5, 15),
       new WaitCommand(1),
-      new DriveDistance(drivetrain, 0.25, 115)
+      new DriveDistance(drivetrain, 0.5, 115)
     );
   }
 
