@@ -29,9 +29,12 @@ public class DriveDistance extends CommandBase {
 
   @Override
   public void execute() {
-    encoderValue = (Math.abs(drivetrain.getRightEncoder()) +
-        Math.abs(drivetrain.getLeftEncoder())) /
-        2;
+    encoderValue =
+      (
+        Math.abs(drivetrain.getRightEncoder()) +
+        Math.abs(drivetrain.getLeftEncoder())
+      ) /
+      2;
     System.out.println(encoderValue);
     this.drivetrain.driveSolo(this.speed, this.speed);
     // this.drivetrain.driveArcade(this.speed, 0);

@@ -9,8 +9,9 @@ import frc.robot.RobotMap;
 public class Drivetrain extends SubsystemBase {
 
   private static final DifferentialDrive differentialDriver = new DifferentialDrive(
-      RobotMap.leftDriveMotor,
-      RobotMap.rightDriveMotor);
+    RobotMap.leftDriveMotor,
+    RobotMap.rightDriveMotor
+  );
 
   public Drivetrain() {
     setDefaultCommand(OIDrive());
@@ -63,10 +64,8 @@ public class Drivetrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-  }
+  public void periodic() {}
 
   @Override
-  public void simulationPeriodic() {
-  }
+  public void simulationPeriodic() {}
 }
