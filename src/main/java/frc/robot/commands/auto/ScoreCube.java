@@ -23,10 +23,13 @@ public final class ScoreCube {
 
   public static CommandBase run(Drivetrain drivetrain) {
     return Commands.sequence(
+      // Drive forward for a bit with high speed so cube falls off
       new DriveDistance(drivetrain, 0.5, 10),
       new WaitCommand(0.5),
+      // Drive backwards to push cube back into lower level
       new DriveDistance(drivetrain, -0.5, 15),
       new WaitCommand(1),
+      // Drive robot backwards
       new DriveDistance(drivetrain, 0.5, 115)
     );
   }
