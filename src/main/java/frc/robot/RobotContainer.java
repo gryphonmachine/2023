@@ -27,10 +27,10 @@ public class RobotContainer {
     // SmartDashboard
     SmartDashboard.putData(m_chooser);
 
-    m_chooser.setDefaultOption("Auto One", kAutoOne);
-    m_chooser.addOption("Auto Two", kAutoTwo);
+    m_chooser.setDefaultOption("Score Game Piece & Leave Community", kAutoOne);
+    m_chooser.addOption("Score Cube on bottom level", kAutoTwo);
 
-    SmartDashboard.putData("Auto choices", m_chooser);
+    SmartDashboard.putData("Choose Auto", m_chooser);
   }
 
   // Xbox Controller Bindings
