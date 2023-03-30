@@ -3,6 +3,7 @@ package frc.robot.commands.auto;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.commands.BalanceBot;
 import frc.robot.commands.DriveDistance;
 import frc.robot.subsystems.Drivetrain;
 
@@ -30,7 +31,8 @@ public final class ScoreCube {
       new DriveDistance(drivetrain, -0.5, 15),
       new WaitCommand(1),
       // Drive robot backwards
-      new DriveDistance(drivetrain, 0.5, 115)
+      new DriveDistance(drivetrain, 0.5, 115),
+      new BalanceBot(drivetrain)
     );
   }
 

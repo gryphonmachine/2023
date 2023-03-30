@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.auto.ChargeStation;
 import frc.robot.commands.auto.ScoreCube;
 import frc.robot.commands.auto.ScoreGamePiece;
 import frc.robot.subsystems.Arm;
@@ -18,6 +19,7 @@ public class RobotContainer {
 
   private static final String kAutoOne = "Auto One";
   private static final String kAutoTwo = "Auto Two";
+  private static final String kAutoThree = "Auto Three";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
@@ -29,6 +31,7 @@ public class RobotContainer {
 
     m_chooser.setDefaultOption("Score Game Piece & Leave Community", kAutoOne);
     m_chooser.addOption("Score Cube on bottom level", kAutoTwo);
+    m_chooser.addOption("Charge Station", kAutoThree);
 
     SmartDashboard.putData("Choose Auto", m_chooser);
   }
@@ -49,6 +52,8 @@ public class RobotContainer {
         return ScoreGamePiece.run(s_drivetrain, s_arm, s_claw);
       case kAutoTwo:
         return ScoreCube.run(s_drivetrain);
+      case kAutoThree:
+        return ChargeStation.run(s_drivetrain, s_arm, s_claw);
       default:
         return ScoreGamePiece.run(s_drivetrain, s_arm, s_claw);
     }
